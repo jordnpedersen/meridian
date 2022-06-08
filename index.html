@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="meridian: 3D graphics web app">
+  <title>meridian</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
+  <link rel="stylesheet" href="src/reset.css">
+  <link rel="stylesheet" href="src/main.css">
+</head>
+<body>
+  <main>
+    <ul>
+      <h1>add</h1>
+      <li><button>capsule</button></li>
+      <li><button>cone</button></li>
+      <li><button>cube</button></li>
+      <li><button>cylinder</button></li>
+      <li><button>knot</button></li>
+      <li><button>sphere</button></li>
+      <li><button>torus</button></li>
+    </ul>
+    <ul>
+      <h1>material</h1>
+      <li><button>basic</button></li>
+      <li><button>lambert</button></li>
+      <li><button>normal</button></li>
+      <li><button>phong</button></li>
+      <li><button>standard</button></li>
+    </ul>
+    <ul>
+      <h1>properties</h1>
+      <li><button>color</button></li>
+      <li><button>location</button></li>
+      <li><button>metalness</button></li>
+      <li><button>opacity</button></li>
+      <li><button>rotation</button></li>
+      <li><button>roughness</button></li>
+      <li><button>scale</button></li>
+    </ul>
+    <ul>
+      <h1>scene</h1>
+      <li><button>camera</button></li>
+      <li><button>cube</button></li>
+      <li><button>light</button></li>
+      <li><button>light2</button></li>
+      <li><button>light3</button></li>
+    </ul>
+    <ul>
+      <h1>settings</h1>
+      <li><button>fog</button></li>
+      <li><button>grid</button></li>
+    </ul>
+  </main>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "OrbitControls": "/node_modules/three/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
