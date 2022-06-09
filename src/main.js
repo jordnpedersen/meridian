@@ -2,6 +2,8 @@
 
 import * as THREE from 'three';
 import {OrbitControls} from 'OrbitControls';
+import * as DEFAULT from '/src/config/default.js';
+import {addCube} from '/src/objects/cube.js';
 
 let scene, camera, renderer, cube;
 
@@ -34,14 +36,10 @@ function init() {
   scene.add(axes);
 
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshStandardMaterial({color: 0x111111});
-  material.dithering = true;
-  material.metalness = 1;
-  material.opacity = 1;
-  material.roughness = 0.5;
-  material.transparent = true;
-  cube = new THREE.Mesh(geometry, material);
+  cube = new THREE.Mesh(geometry, DEFAULT.material);
   scene.add(cube);
+
+  addCube(); // TODO: Remove this line, just testing functionality
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);
@@ -75,3 +73,5 @@ function animate() {
 }
 
 document.oncontextmenu = () => false;
+
+export {scene};
