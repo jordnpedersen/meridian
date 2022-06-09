@@ -8,6 +8,7 @@ import {addCube} from '/src/object/cube.js';
 import {addCylinder} from '/src/object/cylinder.js';
 import {addKnot} from '/src/object/knot.js';
 import {addSphere} from '/src/object/sphere.js';
+import {addTorus} from '/src/object/torus.js';
 
 let scene, camera, renderer;
 
@@ -45,6 +46,7 @@ function init() {
   // addCylinder();
   // addKnot();
   // addSphere();
+  // addTorus();
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);
