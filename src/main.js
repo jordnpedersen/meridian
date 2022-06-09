@@ -2,7 +2,6 @@
 
 import * as THREE from 'three';
 import {OrbitControls} from 'OrbitControls';
-
 import {addCapsule} from '/src/object/capsule.js';
 import {addCone} from '/src/object/cone.js';
 import {addCube} from '/src/object/cube.js';
@@ -10,7 +9,7 @@ import {addCylinder} from '/src/object/cylinder.js';
 import {addKnot} from '/src/object/knot.js';
 import {addSphere} from '/src/object/sphere.js';
 
-let scene, camera, renderer, cube;
+let scene, camera, renderer;
 
 init();
 animate();
@@ -40,12 +39,12 @@ function init() {
   axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
   scene.add(axes);
 
-  addCube();
   // addCapsule();
   // addCone();
+  addCube();
   // addCylinder();
   // addKnot();
-  addSphere();
+  // addSphere();
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);
@@ -57,8 +56,6 @@ function init() {
   const light3 = new THREE.PointLight(0xeeeeee, 1, 0, 2);
   light3.position.set(-1, 6, -3);
   scene.add(light3);
-
-  console.log(scene);
 
   window.addEventListener('resize', onWindowResize);
 
