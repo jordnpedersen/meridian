@@ -1,7 +1,6 @@
 'use strict';
 
 import * as THREE from 'three';
-import {OrbitControls} from 'OrbitControls';
 import {addCapsule} from '/src/object/capsule.js';
 import {addCone} from '/src/object/cone.js';
 import {addCube} from '/src/object/cube.js';
@@ -9,30 +8,34 @@ import {addCylinder} from '/src/object/cylinder.js';
 import {addKnot} from '/src/object/knot.js';
 import {addSphere} from '/src/object/sphere.js';
 import {addTorus} from '/src/object/torus.js';
-import {raycast} from '/src/raycast.js'
+import {raycast} from '/src/raycast.js';
+
+import * as ORBIT from '/src/controls/orbit.js';
+import * as TRANSFORM from '/src/controls/transform.js';
+import * as POINT from '/src/light/point.js';
+import * as PERSPECTIVE from '/src/camera/perspective.js';
 
 let scene, camera, renderer;
 
 init();
 animate();
 
+/**
+ * Initializes the default scene
+ */
 function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   // scene.fog = new THREE.FogExp2(0x000000, 0.01);
 
-  camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0, 3, 6);
-  camera.lookAt(0, 0, 0);
+  camera = PERSPECTIVE.createCamera();
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
   document.body.appendChild(renderer.domElement);
 
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 1;
-  controls.maxDistance = 50;
+  ORBIT.createController();
 
   const grid = new THREE.GridHelper(30, 30, 0x333333, 0x222222);
   scene.add(grid);
@@ -46,19 +49,18 @@ function init() {
   addCube();
   // addCylinder();
   // addKnot();
-  // addSphere();
-  // addTorus();
+  addSphere();
+  addTorus();
+
+  TRANSFORM.createController();
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);
 
-  const light2 = new THREE.PointLight(0xeeeeee, 1, 0, 2);
-  light2.position.set(3, 3, 3);
-  scene.add(light2);
+  POINT.addLight([3, 3, 3]);
+  POINT.addLight([-1, 6, -3]);
 
-  const light3 = new THREE.PointLight(0xeeeeee, 1, 0, 2);
-  light3.position.set(-1, 6, -3);
-  scene.add(light3);
+  console.log(scene);
 
   window.addEventListener('resize', onWindowResize);
 
@@ -71,14 +73,24 @@ function init() {
   }
 }
 
+/**
+ * Renders the scene
+ * Seperated from 'animate()' function for performance reasons as this function needs to be called elsewhere
+ */
+function render() {
+  renderer.render(scene, camera);
+}
+
+/**
+ * Updates the scene
+ * Required for orbit controls and raycasting
+ */
 function animate() {
   requestAnimationFrame(animate);
-
   raycast();
-
-  renderer.render(scene, camera);
+  render();
 }
 
 document.oncontextmenu = () => false;
 
-export {scene, camera};
+export {scene, camera, renderer, render};
