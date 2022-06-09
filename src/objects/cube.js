@@ -1,16 +1,14 @@
 import * as THREE from 'three';
-import * as DEFAULT from '/src/config/default.js';
+import * as STANDARD from '/src/material/standard.js';
 import {scene} from '/src/main.js';
 
-// TODO: Make an object constructor for the object properties
-// TODO: Have parameters for custom properties given by user
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 /**
  * Adds a cube to the scene
  */
 function addCube() {
-  const geometry = new THREE.BoxGeometry(DEFAULT.scale.x, DEFAULT.scale.y, DEFAULT.scale.z);
-  const cube = new THREE.Mesh(geometry, DEFAULT.material);
+  const cube = new THREE.Mesh(geometry, STANDARD.material);
   scene.add(cube);
 }
 
