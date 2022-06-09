@@ -13,49 +13,92 @@
   <link rel="stylesheet" href="src/main.css">
 </head>
 <body>
-  <main>
+  <section id="add">
+    <h1>add</h1>
     <ul>
-      <h1>add</h1>
-      <li><button>capsule</button></li>
-      <li><button>cone</button></li>
-      <li><button>cube</button></li>
-      <li><button>cylinder</button></li>
-      <li><button>knot</button></li>
-      <li><button>sphere</button></li>
-      <li><button>torus</button></li>
+      <li><button id="capsule">capsule</button></li>
+      <li><button id="cone">cone</button></li>
+      <li><button id="cube">cube</button></li>
+      <li><button id="cylinder">cylinder</button></li>
+      <li><button id="knot">knot</button></li>
+      <li><button id="sphere">sphere</button></li>
+      <li><button id="torus">torus</button></li>
     </ul>
+  </section>
+  <section id="scene">
+    <h1>scene</h1>
     <ul>
-      <h1>material</h1>
-      <li><button>basic</button></li>
-      <li><button>lambert</button></li>
-      <li><button>normal</button></li>
-      <li><button>phong</button></li>
-      <li><button>standard</button></li>
+      <li><button id="camera">camera</button></li>
+      <li><button id="cube">> cube</button></li>
+      <li><button id="light">light</button></li>
+      <li><button id="light2">light2</button></li>
+      <li><button id="light3">light3</button></li>
     </ul>
+    <hr>
+    <h2>position</h2>
+    <ul class="xyz">
+      <li>
+        <label>x: </label><input id="position-x" type="number" value="0">
+      </li>
+      <li>
+        <label>y: </label><input id="position-y" type="number" value="0">
+      </li>
+      <li>
+        <label>z: </label><input id="position-z" type="number" value="0">
+      </li>
+    </ul>
+    <hr>
+    <h2>rotation</h2>
+    <ul class="xyz">
+      <li>
+        <label>x: </label><input id="rotation-x" type="number" value="0">
+      </li>
+      <li>
+        <label>y: </label><input id="rotation-y" type="number" value="0">
+      </li>
+      <li>
+        <label>z: </label><input id="rotation-z" type="number" value="0">
+      </li>
+    </ul>
+    <hr>
+    <h2>scale</h2>
+    <ul class="xyz">
+      <li>
+        <label>x: </label><input id="scale-x" type="number" value="1">
+      </li>
+      <li>
+        <label>y: </label><input id="scale-y" type="number" value="1">
+      </li>
+      <li>
+        <label>z: </label><input id="scale-z" type="number" value="1">
+      </li>
+    </ul>
+    <hr>
+    <h2>material</h2>
     <ul>
-      <h1>properties</h1>
-      <li><button>color</button></li>
-      <li><button>location</button></li>
-      <li><button>metalness</button></li>
-      <li><button>opacity</button></li>
-      <li><button>rotation</button></li>
-      <li><button>roughness</button></li>
-      <li><button>scale</button></li>
+      <li><button id="basic">basic</button></li>
+      <li><button id="lambert">lambert</button></li>
+      <li><button id="normal">normal</button></li>
+      <li><button id="phong">phong</button></li>
+      <li><button id="standard">> standard</button></li>
     </ul>
+    <hr>
+    <h2>properties</h2>
     <ul>
-      <h1>scene</h1>
-      <li><button>camera</button></li>
-      <li><button>cube</button></li>
-      <li><button>light</button></li>
-      <li><button>light2</button></li>
-      <li><button>light3</button></li>
+      <li>
+        <label>color: </label><input id="color" type="color" value="#111111">
+      </li>
+      <li>
+        <label>metalness: </label><input id="metalness" type="number" value="1">
+      </li>
+      <li>
+        <label>opacity: </label><input id="opacity" type="number" value="1">
+      </li>
+      <li>
+        <label>roughness: </label><input id="roughness" type="number" value="0.5">
+      </li>
     </ul>
-    <ul>
-      <h1>settings</h1>
-      <li><button>fog</button></li>
-      <li><button>grid</button></li>
-    </ul>
-  </main>
+  </section>
   <script type="importmap">
     {
       "imports": {

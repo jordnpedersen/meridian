@@ -1,6 +1,9 @@
 * {
   font-size: 1.5rem;
 }
+::selection {
+  background: #006070;
+}
 html {
   --gap: 20px;
   --gray: #222;
@@ -11,16 +14,71 @@ body {
   background: #000;
   color: #fff;
 }
-main {
-  display: flex;
+section {
+  margin: var(--gap);
+  border: 1px solid var(--gray);
+  border-radius: var(--gap);
+  padding: var(--gap);
   position: fixed;
+  max-height: 100%;
+  display: grid;
+  gap: calc(var(--gap) / 2);
+  backdrop-filter: blur(var(--gap));
+}
+h1,
+h2 {
+  font-weight: bold;
+  text-align: center;
 }
 ul {
-  border: 1px solid var(--gray);
-  border-radius: 6px;
-  padding: var(--gap);
-  backdrop-filter: blur(var(--gap));
+  display: grid;
+  gap: calc(var(--gap) / 2);
 }
 button {
   background: transparent;
+}
+#scene {
+  right: 0;
+  overflow: scroll;
+}
+hr {
+  height: 1px;
+  background: var(--gray);
+}
+.xyz {
+  grid-template-columns: auto auto auto;
+}
+input {
+  max-width: calc(var(--gap) * 2);
+  outline: none;
+  background: transparent;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=color] {
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+::-moz-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+::-webkit-color-swatch-wrapper {
+  border-radius: 6px;
+  padding: 0;
 }
