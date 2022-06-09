@@ -2,8 +2,13 @@
 
 import * as THREE from 'three';
 import {OrbitControls} from 'OrbitControls';
-import * as DEFAULT from '/src/config/default.js';
-import {addCube} from '/src/objects/cube.js';
+
+import {addCapsule} from '/src/object/capsule.js';
+import {addCone} from '/src/object/cone.js';
+import {addCube} from '/src/object/cube.js';
+import {addCylinder} from '/src/object/cylinder.js';
+import {addKnot} from '/src/object/knot.js';
+import {addSphere} from '/src/object/sphere.js';
 
 let scene, camera, renderer, cube;
 
@@ -35,11 +40,12 @@ function init() {
   axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
   scene.add(axes);
 
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  cube = new THREE.Mesh(geometry, DEFAULT.material);
-  scene.add(cube);
-
-  addCube(); // TODO: Remove this line, just testing functionality
+  addCube();
+  // addCapsule();
+  // addCone();
+  // addCylinder();
+  // addKnot();
+  addSphere();
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);
@@ -51,6 +57,8 @@ function init() {
   const light3 = new THREE.PointLight(0xeeeeee, 1, 0, 2);
   light3.position.set(-1, 6, -3);
   scene.add(light3);
+
+  console.log(scene);
 
   window.addEventListener('resize', onWindowResize);
 
@@ -66,8 +74,8 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotation.x += 0.005;
-  cube.rotation.y += 0.005;
+  // cube.rotation.x += 0.005;
+  // cube.rotation.y += 0.005;
 
   renderer.render(scene, camera);
 }
