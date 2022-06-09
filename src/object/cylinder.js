@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import * as STANDARD from '/src/material/standard.js';
 import {scene} from '/src/main.js';
 
-const geometry = new THREE.CylinderGeometry(.65, .65, 1, 16);
+const geometry = new THREE.CylinderGeometry(0.65, 0.65, 1, 16);
 
 /**
  * Adds a cylinder object to the scene
