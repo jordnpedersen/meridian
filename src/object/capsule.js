@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import * as STANDARD from '/src/material/standard.js';
 import {scene} from '/src/main.js';
 
-const geometry = new THREE.CapsuleGeometry(0.65, 0.65, 4, 8);
+const geometry = new THREE.CapsuleGeometry(0.5, 1, 8, 16);
 
 /**
  * Adds a capsule object to the scene
