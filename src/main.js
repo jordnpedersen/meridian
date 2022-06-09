@@ -9,6 +9,7 @@ import {addCylinder} from '/src/object/cylinder.js';
 import {addKnot} from '/src/object/knot.js';
 import {addSphere} from '/src/object/sphere.js';
 import {addTorus} from '/src/object/torus.js';
+import {raycast} from '/src/raycast.js'
 
 let scene, camera, renderer;
 
@@ -73,12 +74,11 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
 
-  // cube.rotation.x += 0.005;
-  // cube.rotation.y += 0.005;
+  raycast();
 
   renderer.render(scene, camera);
 }
 
 document.oncontextmenu = () => false;
 
-export {scene};
+export {scene, camera};
