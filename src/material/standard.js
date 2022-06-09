@@ -1,6 +1,6 @@
-import * as THREE from 'three';
+'use strict';
 
-const scale = {x: 1, y: 1, z: 1};
+import * as THREE from 'three';
 
 const material = new THREE.MeshStandardMaterial({
   color: 0x111111,
@@ -11,4 +11,4 @@ const material = new THREE.MeshStandardMaterial({
   transparent: true
 });
 
-export {scale, material};
+export {material};
