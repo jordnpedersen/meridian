@@ -2,11 +2,10 @@
 
 import * as THREE from 'three';
 import {OrbitControls} from 'OrbitControls';
-import * as DEFAULT from '/src/config/default.js'
-import {addCube} from "/src/objects/cube.js"
+import * as DEFAULT from '/src/config/default.js';
+import {addCube} from '/src/objects/cube.js';
 
 let scene, camera, renderer, cube;
-
 
 init();
 animate();
@@ -75,4 +74,4 @@ function animate() {
 
 document.oncontextmenu = () => false;
 
-export { scene }
+export {scene};
