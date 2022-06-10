@@ -45,10 +45,10 @@ document.addEventListener('keydown', event => {
     case 'r':
       controls.setMode('scale');
       break;
-    case 'shift':
-      controls.setTranslationSnap(1);
+    case 'Shift':
+      controls.setTranslationSnap(0.5);
       controls.setRotationSnap(THREE.MathUtils.degToRad(15));
-      controls.setScaleSnap(0.25);
+      controls.setScaleSnap(0.5);
       break;
     //   TODO: Not sure if we should include these cases
     // case 'c':
@@ -88,7 +88,7 @@ document.addEventListener('keydown', event => {
     case ' ':
       controls.enabled = !controls.enabled;
       break;
-    case 'escape':
+    case 'Escape':
       // TODO: Implement this somewhere else. Similar to 'freeze transformations' option in Maya
       // controls.reset();
       controls.detach();
@@ -98,7 +98,7 @@ document.addEventListener('keydown', event => {
 
 document.addEventListener('keyup', event => {
   switch (event.key) {
-    case 'shift':
+    case 'Shift':
       controls.setTranslationSnap(null);
       controls.setRotationSnap(null);
       controls.setScaleSnap(null);

@@ -30,7 +30,7 @@ function onMouseDown(event) {
 
   for (let i = 0; i < intersects.length; i++) {
     let selectedObject = intersects[i].object;
-    if (selectedObject.type == "Mesh" && (pointer.x != 0 && pointer.y != 0) && selectedObject.static != true) {
+    if (selectedObject.type == 'Mesh' && (pointer.x != 0 && pointer.y != 0) && selectedObject.static != true) {
       selectedObject.material.color.set(0x00ff00);
       TRANSFORM.controls.attach(selectedObject);
     }
@@ -46,7 +46,7 @@ function raycast() {
   const intersects = raycaster.intersectObjects(scene.children);
 
   for (let i = 0; i < intersects.length; i++) {
-    if (intersects[i].object.type == "Mesh" && (pointer.x != 0 && pointer.y != 0)) {
+    if (intersects[i].object.type == 'Mesh' && (pointer.x != 0 && pointer.y != 0)) {
       // TODO: This currently does not do anything. See if we need a case where an object will change upon mouse over
       // intersects[i].object.material.color.set(0xff0000);
     }
