@@ -1,7 +1,7 @@
 'use strict';
 
 import * as THREE from 'three';
-import * as STANDARD from '/src/material/standard.js';
+import * as STANDARD from '/src/materials/standard.js';
 import {scene} from '/src/main.js';
 
 const geometry = new THREE.SphereGeometry(0.5, 32, 32);

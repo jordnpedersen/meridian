@@ -3,17 +3,17 @@
 import * as THREE from 'three';
 
 import * as ORBIT from '/src/controls/orbit.js';
-import * as PERSPECTIVE from '/src/camera/perspective.js';
-import * as POINT from '/src/light/point.js';
+import * as PERSPECTIVE from '/src/cameras/perspective.js';
+import * as POINT from '/src/lights/point.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 
-import {addCapsule} from '/src/object/capsule.js';
-import {addCone} from '/src/object/cone.js';
-import {addCube} from '/src/object/cube.js';
-import {addCylinder} from '/src/object/cylinder.js';
-import {addKnot} from '/src/object/knot.js';
-import {addSphere} from '/src/object/sphere.js';
-import {addTorus} from '/src/object/torus.js';
+import {addCapsule} from '/src/objects/capsule.js';
+import {addCone} from '/src/objects/cone.js';
+import {addCube} from '/src/objects/cube.js';
+import {addCylinder} from '/src/objects/cylinder.js';
+import {addKnot} from '/src/objects/knot.js';
+import {addSphere} from '/src/objects/sphere.js';
+import {addTorus} from '/src/objects/torus.js';
 
 import {raycast} from '/src/raycast.js';
 
