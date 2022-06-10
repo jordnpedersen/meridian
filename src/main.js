@@ -25,7 +25,6 @@ animate();
 function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
-  // scene.fog = new THREE.FogExp2(0x000000, 0.01);
 
   camera = PERSPECTIVE.createCamera();
 
@@ -36,12 +35,14 @@ function init() {
 
   ORBIT.createController();
 
+  TRANSFORM.createController();
+
   const grid = new THREE.GridHelper(30, 30, 0x333333, 0x222222);
   scene.add(grid);
 
-  const axes = new THREE.AxesHelper(1.5);
-  axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
-  scene.add(axes);
+  // const axes = new THREE.AxesHelper(1.5);
+  // axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
+  // scene.add(axes);
 
   // addCapsule();
   // addCone();
@@ -50,8 +51,6 @@ function init() {
   // addKnot();
   // addSphere();
   // addTorus();
-
-  TRANSFORM.createController();
 
   const light = new THREE.AmbientLight(0xeeeeee);
   scene.add(light);

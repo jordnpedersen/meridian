@@ -90,8 +90,9 @@ document.addEventListener('keydown', event => {
       break;
     case 'Escape':
       // TODO: Implement this somewhere else. Similar to 'freeze transformations' option in Maya
-      // controls.reset();
       controls.detach();
+      // controls.dispose();
+      // controls.reset();
       break;
   }
 });
