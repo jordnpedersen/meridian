@@ -10,7 +10,7 @@ let controls;
  */
 function createController() {
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 1;
+  controls.minDistance = 2;
   controls.maxDistance = 50;
 }
 

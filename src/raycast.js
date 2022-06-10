@@ -7,6 +7,9 @@ import * as TRANSFORM from '/src/controls/transform.js';
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
+window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('mousedown', onMouseDown);
+
 /**
  * Calculate pointer position in normalized device coordinates
  * (-1 to +1) for both components
@@ -44,13 +47,10 @@ function raycast() {
 
   for (let i = 0; i < intersects.length; i++) {
     if (intersects[i].object.type == "Mesh" && (pointer.x != 0 && pointer.y != 0)) {
-      // TODO: This currently does not do anything. See if we need a case where an object will change upon mouse over.
+      // TODO: This currently does not do anything. See if we need a case where an object will change upon mouse over
       // intersects[i].object.material.color.set(0xff0000);
     }
   }
 }
-
-window.addEventListener('mousemove', onMouseMove);
-window.addEventListener('mousedown', onMouseDown, false);
 
 export {raycast};

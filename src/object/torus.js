@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import * as STANDARD from '/src/material/standard.js';
 import {scene} from '/src/main.js';
 
-const geometry = new THREE.TorusGeometry(0.55, 0.15, 16, 64);
+const geometry = new THREE.TorusGeometry(0.4, 0.2, 16, 64);
 
 /**
  * Adds a torus object to the scene

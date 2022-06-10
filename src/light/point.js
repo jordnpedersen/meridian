@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import {scene} from '/src/main.js';
 
-const POS = [1, 1, 1];
+const POS = [1, 3, 1];
 const COLOR = 0xeeeeee;
 const INTENSITY = 1;
 const DISTANCE = 0;

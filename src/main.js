@@ -1,6 +1,12 @@
 'use strict';
 
 import * as THREE from 'three';
+
+import * as ORBIT from '/src/controls/orbit.js';
+import * as PERSPECTIVE from '/src/camera/perspective.js';
+import * as POINT from '/src/light/point.js';
+import * as TRANSFORM from '/src/controls/transform.js';
+
 import {addCapsule} from '/src/object/capsule.js';
 import {addCone} from '/src/object/cone.js';
 import {addCube} from '/src/object/cube.js';
@@ -8,21 +14,14 @@ import {addCylinder} from '/src/object/cylinder.js';
 import {addKnot} from '/src/object/knot.js';
 import {addSphere} from '/src/object/sphere.js';
 import {addTorus} from '/src/object/torus.js';
-import {raycast} from '/src/raycast.js';
 
-import * as ORBIT from '/src/controls/orbit.js';
-import * as TRANSFORM from '/src/controls/transform.js';
-import * as POINT from '/src/light/point.js';
-import * as PERSPECTIVE from '/src/camera/perspective.js';
+import {raycast} from '/src/raycast.js';
 
 let scene, camera, renderer;
 
 init();
 animate();
 
-/**
- * Initializes the default scene
- */
 function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
@@ -49,8 +48,8 @@ function init() {
   addCube();
   // addCylinder();
   // addKnot();
-  addSphere();
-  addTorus();
+  // addSphere();
+  // addTorus();
 
   TRANSFORM.createController();
 
@@ -59,8 +58,6 @@ function init() {
 
   POINT.addLight([3, 3, 3]);
   POINT.addLight([-1, 6, -3]);
-
-  console.log(scene);
 
   window.addEventListener('resize', onWindowResize);
 
