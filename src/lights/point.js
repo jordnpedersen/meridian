@@ -19,9 +19,9 @@ const HELPER_SIZE = 1;
  * @param {float} decay decay of light
  */
 function addLight(pos = POS, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY) {
-  const pointLight = new THREE.PointLight(color, intensity, distance, decay);
-  pointLight.position.set(pos[0], pos[1], pos[2]);
-  scene.add(pointLight);
+  const light = new THREE.PointLight(color, intensity, distance, decay);
+  light.position.set(pos[0], pos[1], pos[2]);
+  scene.add(light);
 }
 
 /**
@@ -30,8 +30,8 @@ function addLight(pos = POS, color = COLOR, intensity = INTENSITY, distance = DI
  * @param {float} helperSize size of helper
  */
 function addLightHelper(light, helperSize = HELPER_SIZE) {
-  const pointLightHelper = new THREE.PointLightHelper(light, helperSize);
-  scene.add(pointLightHelper);
+  const lightHelper = new THREE.PointLightHelper(light, helperSize);
+  scene.add(lightHelper);
 }
 
 /**
@@ -44,9 +44,9 @@ function addLightHelper(light, helperSize = HELPER_SIZE) {
  * @param {float} helperSize size of helper
  */
 function addLightWithHelper(pos = POS, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, helperSize = HELPER_SIZE) {
-  const pointLight = new THREE.PointLight(color, intensity, distance, decay);
-  pointLight.position.set(pos[0], pos[1], pos[2]);
-  addLightHelper(pointLight, helperSize);
+  const light = new THREE.PointLight(color, intensity, distance, decay);
+  light.position.set(pos[0], pos[1], pos[2]);
+  addLightHelper(light, helperSize);
 }
 
 export {addLight, addLightHelper, addLightWithHelper};
