@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import * as STANDARD from '/src/materials/standard.js';
 import {scene} from '/src/main.js';
 
+const id = document.getElementById("torus");
 const geometry = new THREE.TorusGeometry(0.4, 0.2, 16, 64);
 
 /**
@@ -13,5 +14,7 @@ function addTorus() {
   const torus = new THREE.Mesh(geometry, STANDARD.material);
   scene.add(torus);
 }
+
+id.addEventListener("click", () => {addTorus()}, false);
 
 export {addTorus};
