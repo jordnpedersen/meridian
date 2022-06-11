@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("knot");
+const id = document.getElementById("addKnot");
 const geometry = new THREE.TorusKnotGeometry(0.3, 0.1, 96, 16);
 
 /**

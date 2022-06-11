@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("cube");
+const id = document.getElementById("addCube");
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 /**

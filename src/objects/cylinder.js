@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("cylinder");
+const id = document.getElementById("addCylinder");
 const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
 
 /**

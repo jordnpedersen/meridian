@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("cone");
+const id = document.getElementById("addCone");
 const geometry = new THREE.ConeGeometry(0.5, 1, 32, 4);
 
 /**

@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("sphere");
+const id = document.getElementById("addSphere");
 const geometry = new THREE.SphereGeometry(0.5, 32, 32);
 
 /**

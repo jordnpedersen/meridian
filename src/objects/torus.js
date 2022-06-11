@@ -5,7 +5,7 @@ import * as STANDARD from '/src/materials/standard.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const id = document.getElementById("torus");
+const id = document.getElementById("addTorus");
 const geometry = new THREE.TorusGeometry(0.4, 0.2, 16, 64);
 
 /**
