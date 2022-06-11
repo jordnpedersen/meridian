@@ -4,6 +4,7 @@ import * as THREE from 'three';
 
 import * as ORBIT from '/src/controls/orbit.js';
 import * as PERSPECTIVE from '/src/cameras/perspective.js';
+import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 
@@ -44,16 +45,9 @@ function init() {
   // axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
   // scene.add(axes);
 
-  // addCapsule();
-  // addCone();
   addCube();
-  // addCylinder();
-  // addKnot();
-  // addSphere();
-  // addTorus();
 
-  const light = new THREE.AmbientLight(0xeeeeee);
-  scene.add(light);
+  AMBIENT.addLight();
 
   POINT.addLight([3, 3, 3]);
   POINT.addLight([-1, 6, -3]);
