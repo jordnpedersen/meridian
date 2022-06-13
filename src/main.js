@@ -7,16 +7,11 @@ import * as PERSPECTIVE from '/src/cameras/perspective.js';
 import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
 import * as TRANSFORM from '/src/controls/transform.js';
-
-import {addCapsule} from '/src/objects/capsule.js';
-import {addCone} from '/src/objects/cone.js';
-import {addCube} from '/src/objects/cube.js';
-import {addCylinder} from '/src/objects/cylinder.js';
-import {addKnot} from '/src/objects/knot.js';
-import {addSphere} from '/src/objects/sphere.js';
-import {addTorus} from '/src/objects/torus.js';
+import * as OBJECT from '/src/utils/object.js';
 
 import {raycast} from '/src/raycast.js';
+
+import '/src/events.js';
 
 let scene, camera, renderer;
 
@@ -45,18 +40,14 @@ function init() {
   // axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
   // scene.add(axes);
 
-  // addCapsule();
-  // addCone();
-  addCube();
-  // addCylinder();
-  // addKnot();
-  // addSphere();
-  // addTorus();
+  OBJECT.addObject("cube", false);
 
   AMBIENT.addLight();
 
   POINT.addLight([3, 3, 3]);
   POINT.addLight([-1, 6, -3]);
+
+  console.log(scene);
 
   window.addEventListener('resize', onWindowResize);
 
