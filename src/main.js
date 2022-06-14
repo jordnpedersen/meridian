@@ -1,17 +1,15 @@
 'use strict';
 
 import * as THREE from 'three';
-
-import * as ORBIT from '/src/controls/orbit.js';
 import * as PERSPECTIVE from '/src/cameras/perspective.js';
-import * as AMBIENT from '/src/lights/ambient.js';
-import * as POINT from '/src/lights/point.js';
+import * as ORBIT from '/src/controls/orbit.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import * as OBJECT from '/src/utils/object.js';
 import * as UI from '/src/utils/ui.js';
+import * as AMBIENT from '/src/lights/ambient.js';
+import * as POINT from '/src/lights/point.js';
 
 import {raycast} from '/src/raycast.js';
-
 import '/src/events.js';
 
 let scene, camera, renderer;
@@ -37,28 +35,20 @@ function init() {
   const grid = new THREE.GridHelper(30, 30, 0x333333, 0x222222);
   scene.add(grid);
 
-  // const axes = new THREE.AxesHelper(1.5);
-  // axes.setColors(0xff0000, 0x00ff00, 0x0000ff);
-  // scene.add(axes);
-
-  OBJECT.addObject("cube", false);
+  OBJECT.addObject('cube', false);
 
   AMBIENT.addLight();
 
   POINT.addLight([3, 3, 3]);
   POINT.addLight([-1, 6, -3]);
 
-  console.log(scene);
-
-  window.addEventListener('resize', onWindowResize);
-
-  function onWindowResize() {
+  window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-  }
+  });
 }
 
 /**
