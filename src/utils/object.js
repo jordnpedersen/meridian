@@ -2,16 +2,16 @@
 
 import * as THREE from 'three';
 import * as STANDARD from '/src/materials/standard.js';
-import * as TRANSFORM from '/src/controls/transform.js';
-import * as ID from '/src/utils/uuid.js';
 import * as NAME from '/src/utils/name.js';
-import {scene} from '/src/main.js';
+import * as ID from '/src/utils/uuid.js';
+import * as TRANSFORM from '/src/controls/transform.js';
 import {objects} from '/src/configs/objects.js';
+import {scene} from '/src/main.js';
 
 const raycasterObjects = [];
 
 /**
- * Adds an object (mesh) to the scene, and assigns it's UUID embedded in the HTML
+ * Adds an object to the scene, and assigns it's UUID embedded in the HTML
  * @param {string} objectName object name to add to scene
  * @param {boolean} attach true if transform controls should automatically be attached to object
  */
@@ -28,4 +28,4 @@ function addObject(objectName, attach = true) {
   }
 }
 
-export {addObject, raycasterObjects};
+export {raycasterObjects, addObject};
