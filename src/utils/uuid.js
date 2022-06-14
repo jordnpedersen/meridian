@@ -18,7 +18,8 @@ function assignID(object) {
   const li = document.createElement('li');
   const button = document.createElement('button');
   button.innerHTML = object.name;
-  button.setAttribute('id', object.uuid);
+  button.setAttribute("id", object.id);
+  li.appendChild(button);
   ul.appendChild(li);
   li.appendChild(button);
 }
