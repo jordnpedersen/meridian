@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
 import {scene, camera, renderer, render} from '/src/main.js';
-
 import {raycasterObjects} from '/src/utils/object.js';
 
 let controls;
@@ -14,7 +13,6 @@ let controls;
  */
 function createController() {
   controls = new TransformControls(camera, renderer.domElement);
-
   controls.addEventListener('change', render);
   controls.addEventListener('dragging-changed', event => {
     ORBIT.controls.enabled = !event.value;
@@ -23,13 +21,10 @@ function createController() {
   // Set a custom property 'static' to let raycaster know to not select transform controller mesh
   // TODO: See if it would be better to create a new method outside that handles this for any object
   controls.static = true;
-  controls.traverse(function(child) {
-    child.static = true;
-  })
+  controls.traverse(child => child.static = true);
+  scene.add(controls);
 
   raycasterObjects.push(controls);
-
-  scene.add(controls);
 }
 
 /**
@@ -49,12 +44,15 @@ document.addEventListener('keydown', event => {
     case 'r':
       controls.setMode('scale');
       break;
-    case 'Shift':
-      controls.setTranslationSnap(0.5);
-      controls.setRotationSnap(THREE.MathUtils.degToRad(15));
-      controls.setScaleSnap(0.5);
+    case 'x':
+      controls.showX = !controls.showX;
       break;
-    //   TODO: Not sure if we should include these cases
+    case 'y':
+      controls.showY = !controls.showY;
+      break;
+    case 'z':
+      controls.showZ = !controls.showZ;
+      break;
     // case 'c':
     //   const position = camera.position.clone();
     //   camera = camera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
@@ -80,23 +78,16 @@ document.addEventListener('keydown', event => {
     case '-':
       controls.setSize(Math.max(controls.size - 0.1, 0.1));
       break;
-    case 'x':
-      controls.showX = !controls.showX;
-      break;
-    case 'y':
-      controls.showY = !controls.showY;
-      break;
-    case 'z':
-      controls.showZ = !controls.showZ;
-      break;
     case ' ':
       controls.enabled = !controls.enabled;
       break;
+    case 'Shift':
+      controls.setTranslationSnap(0.5);
+      controls.setRotationSnap(THREE.MathUtils.degToRad(15));
+      controls.setScaleSnap(0.5);
+      break;
     case 'Escape':
-      // TODO: Implement this somewhere else. Similar to 'freeze transformations' option in Maya
       controls.detach();
-      // controls.dispose();
-      // controls.reset();
       break;
   }
 });

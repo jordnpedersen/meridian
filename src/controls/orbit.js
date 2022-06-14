@@ -14,4 +14,4 @@ function createController() {
   controls.maxDistance = 50;
 }
 
-export {controls, createController}
+export {controls, createController};
