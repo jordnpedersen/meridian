@@ -8,6 +8,8 @@ import * as NAME from '/src/utils/name.js';
 import {scene} from '/src/main.js';
 import {objects} from '/src/configs/objects.js';
 
+const raycasterObjects = [];
+
 /**
  * Adds an object (mesh) to the scene, and assigns it's UUID embedded in the HTML
  * @param {string} objectName object name to add to scene
@@ -16,6 +18,7 @@ import {objects} from '/src/configs/objects.js';
 function addObject(objectName, attach = true) {
   const object = new THREE.Mesh(objects[objectName].geometry, STANDARD.material);
   object.name = NAME.getName(objectName);
+  raycasterObjects.push(object);
   scene.add(object);
 
   ID.assignID(object);
@@ -25,4 +28,4 @@ function addObject(objectName, attach = true) {
   }
 }
 
-export {addObject};
+export {addObject, raycasterObjects};

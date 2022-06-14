@@ -5,6 +5,8 @@ import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
 import {scene, camera, renderer, render} from '/src/main.js';
 
+import {raycasterObjects} from '/src/utils/object.js';
+
 let controls;
 
 /**
@@ -24,6 +26,8 @@ function createController() {
   controls.traverse(function(child) {
     child.static = true;
   })
+
+  raycasterObjects.push(controls);
 
   scene.add(controls);
 }

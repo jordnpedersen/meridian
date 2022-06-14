@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import {scene, camera} from '/src/main.js';
 import * as TRANSFORM from '/src/controls/transform.js';
+import {raycasterObjects} from '/src/utils/object.js';
 
 const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -26,14 +27,19 @@ function onMouseMove(event) {
  */
 function onMouseDown(event) {
   raycaster.setFromCamera(pointer, camera);
-  const intersects = raycaster.intersectObjects(scene.children);
+  const intersects = raycaster.intersectObjects(raycasterObjects);
 
   for (let i = 0; i < intersects.length; i++) {
     let selectedObject = intersects[i].object;
-
     if (selectedObject.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0) && selectedObject.static !== true) {
       TRANSFORM.controls.attach(selectedObject);
     }
+  }
+
+  const filtered = intersects.filter(e => e.object.static == true && e.object.type !== "Mesh");
+
+  if (intersects.length == 0 || filtered.length == intersects.length) {
+    TRANSFORM.controls.detach();
   }
 }
 
