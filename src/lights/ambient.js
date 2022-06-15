@@ -23,7 +23,7 @@ function addLight(color = COLOR, intensity = INTENSITY) {
  * @param {float} helperSize size of helper
  */
 function addLightHelper(light, helperSize = HELPER_SIZE) {
-  const lightHelper = new THREE.PointLightHelper(light, helperSize);
+  const lightHelper = new THREE.PointLightHelper(light, helperSize, COLOR);
   scene.add(lightHelper);
 }
 

@@ -8,7 +8,7 @@ const COLOR = 0xeeeeee;
 const INTENSITY = 1;
 const DISTANCE = 0;
 const DECAY = 2;
-const HELPER_SIZE = 1;
+const HELPER_SIZE = 0.5;
 
 /**
  * Adds a point light to the scene with the following properties
@@ -30,7 +30,7 @@ function addLight(pos = POS, color = COLOR, intensity = INTENSITY, distance = DI
  * @param {float} helperSize size of helper
  */
 function addLightHelper(light, helperSize = HELPER_SIZE) {
-  const lightHelper = new THREE.PointLightHelper(light, helperSize);
+  const lightHelper = new THREE.PointLightHelper(light, helperSize, COLOR);
   scene.add(lightHelper);
 }
 
