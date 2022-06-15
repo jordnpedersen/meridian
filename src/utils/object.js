@@ -1,6 +1,10 @@
 'use strict';
 
 import * as THREE from 'three';
+import * as BASIC from '/src/materials/basic.js';
+import * as LAMBERT from '/src/materials/lambert.js';
+import * as NORMAL from '/src/materials/normal.js';
+import * as PHONG from '/src/materials/phong.js';
 import * as STANDARD from '/src/materials/standard.js';
 import * as NAME from '/src/utils/name.js';
 import * as ID from '/src/utils/uuid.js';
