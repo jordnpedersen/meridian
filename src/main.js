@@ -36,7 +36,7 @@ function init() {
 
   OBJECT.addObject('cube', false);
 
-  AMBIENT.addLightWithHelper();
+  AMBIENT.addLight();
 
   POINT.addLightWithHelper([3, 3, 3]);
   POINT.addLightWithHelper([-1, 6, -3]);
