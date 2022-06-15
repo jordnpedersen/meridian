@@ -54,7 +54,13 @@ document.addEventListener('keydown', event => {
       case 'z':
         controls.showZ = !controls.showZ;
         break;
-      // case 'c':
+      case 'a':
+        controls.setSize(controls.size + 0.1);
+        break;
+      case 's':
+        controls.setSize(Math.max(controls.size - 0.1, 0.1));
+        break;
+      // case 'd':
       //   const position = camera.position.clone();
       //   camera = camera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
       //   camera.position.copy(position);
@@ -63,23 +69,23 @@ document.addEventListener('keydown', event => {
       //   camera.lookAt(orbit.target.x, orbit.target.y, orbit.target.z);
       //   onWindowResize();
       //   break;
-      // case 'v':
-      //   const randomFoV = Math.random() + 0.1;
-      //   const randomZoom = Math.random() + 0.1;
-      //   cameraPersp.fov = randomFoV * 160;
-      //   cameraOrtho.bottom = - randomFoV * 500;
-      //   cameraOrtho.top = randomFoV * 500;
-      //   cameraPersp.zoom = randomZoom * 5;
-      //   cameraOrtho.zoom = randomZoom * 5;
-      //   onWindowResize();
-      //   break;
-      case '=':
-      case '+':
-        controls.setSize(controls.size + 0.1);
-        break;
       case '-':
       case '_':
-        controls.setSize(Math.max(controls.size - 0.1, 0.1));
+        if (camera.fov > 120) {
+          camera.fov = 120;
+        } else {
+          camera.fov += 1;
+        }
+        camera.updateProjectionMatrix();
+        break;
+      case '=':
+      case '+':
+        if (camera.fov < 20) {
+          camera.fov = 20;
+        } else {
+          camera.fov -= 1;
+        }
+        camera.updateProjectionMatrix();
         break;
       case ' ':
         controls.enabled = !controls.enabled;
