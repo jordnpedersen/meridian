@@ -90,6 +90,9 @@ document.addEventListener('keydown', event => {
       controls.detach();
       break;
     case 'Delete':
+      raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid));
+      controls.object.geometry.dispose();
+      controls.object.material.dispose();
       scene.remove(controls.object);
       controls.detach();
       break;
