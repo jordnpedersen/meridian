@@ -3,17 +3,17 @@
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene} from '/src/main.js';
 
-const px = document.getElementById("position-x");
-const py = document.getElementById("position-y");
-const pz = document.getElementById("position-z");
+const px = document.getElementById('position-x');
+const py = document.getElementById('position-y');
+const pz = document.getElementById('position-z');
 
-const rx = document.getElementById("rotation-x");
-const ry = document.getElementById("rotation-y");
-const rz = document.getElementById("rotation-z");
+const rx = document.getElementById('rotation-x');
+const ry = document.getElementById('rotation-y');
+const rz = document.getElementById('rotation-z');
 
-const sx = document.getElementById("scale-x");
-const sy = document.getElementById("scale-y");
-const sz = document.getElementById("scale-z");
+const sx = document.getElementById('scale-x');
+const sy = document.getElementById('scale-y');
+const sz = document.getElementById('scale-z');
 
 function updateUIposition(x, y, z) {
   px.value = x;
@@ -34,7 +34,7 @@ function updateUIscale(x, y, z) {
 }
 
 function updateUI() {
-  if (TRANSFORM.controls.object == undefined) {
+  if (TRANSFORM.controls.object === undefined) {
     updateUIposition(0, 0, 0);
     updateUIrotation(0, 0, 0);
     updateUIscale(0, 0, 0);
@@ -45,13 +45,12 @@ function updateUI() {
   }
 }
 
-document.getElementById("sceneObjects").addEventListener("click", selectObject);
-
-function selectObject(event) {
+document.getElementById('sceneObjects').addEventListener('click', event => {
   const object = scene.getObjectById(parseInt(event.target.id));
+
   if (object !== undefined) {
     TRANSFORM.controls.attach(object);
   }
-}
+});
 
 export {updateUI};
