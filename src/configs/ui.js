@@ -4,6 +4,9 @@ const ui = {
   'scene': document.getElementById('scene'),
   'sceneObjects': document.getElementById('sceneObjects'),
   'color': document.getElementById('color'),
+  'metalness': document.getElementById('metalness'),
+  'opacity': document.getElementById('opacity'),
+  'roughness': document.getElementById('roughness'),
   'position': {
     'x': document.getElementById('position-x'),
     'y': document.getElementById('position-y'),
