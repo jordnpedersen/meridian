@@ -26,7 +26,7 @@ window.addEventListener('mousemove', event => {
  */
 function clickedUI(event) {
   for (let i = 0; i < event.path.length; i++) {
-    if (event.path[i] === ui.add || ui.scene) {
+    if (event.path[i] === ui.add || event.path[i] === ui.scene) {
       return true;
     }
   }
