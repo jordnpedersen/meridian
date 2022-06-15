@@ -73,10 +73,12 @@ document.addEventListener('keydown', event => {
       //   cameraOrtho.zoom = randomZoom * 5;
       //   onWindowResize();
       //   break;
+      case '=':
       case '+':
         controls.setSize(controls.size + 0.1);
         break;
       case '-':
+      case '_':
         controls.setSize(Math.max(controls.size - 0.1, 0.1));
         break;
       case ' ':
