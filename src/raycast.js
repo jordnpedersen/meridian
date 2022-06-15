@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene, camera} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
+import {ui} from '/src/configs/ui.js';
 
 const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -17,6 +18,21 @@ window.addEventListener('mousemove', event => {
   pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
   pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
 });
+
+/**
+ * Checks to see if event pressed is the 'scene' UI element
+ * @param {event} event
+ * @returns true if scene section is in event's path array
+ */
+function clickedUI(event) {
+  for (let i = 0; i < event.path.length; i++) {
+    if (event.path[i] == ui.scene) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 /**
  * Do something when mouse is pressed over mesh
@@ -37,7 +53,10 @@ window.addEventListener('mousedown', event => {
   }
 
   if (intersects.length === 0 || filtered.length === intersects.length) {
-    TRANSFORM.controls.detach();
+    if (!clickedUI(event)) {
+      const selectedObject = TRANSFORM.controls.object;
+      TRANSFORM.controls.detach();
+    }
   }
 });
 
