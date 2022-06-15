@@ -39,6 +39,8 @@ function getName(objectName) {
 
   if (highest === -1) {
     return objectName;
+  } else if (highest === 0) {
+    return objectName += 2;
   } else {
     return objectName + (++highest).toString();
   }
