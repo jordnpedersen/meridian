@@ -31,71 +31,73 @@ function createController() {
  * Event listener for transform shortcuts
  */
 document.addEventListener('keydown', event => {
-  switch (event.key) {
-    case 'q':
-      controls.setSpace(controls.space === 'local' ? 'world' : 'local');
-      break;
-    case 'w':
-      controls.setMode('translate');
-      break;
-    case 'e':
-      controls.setMode('rotate');
-      break;
-    case 'r':
-      controls.setMode('scale');
-      break;
-    case 'x':
-      controls.showX = !controls.showX;
-      break;
-    case 'y':
-      controls.showY = !controls.showY;
-      break;
-    case 'z':
-      controls.showZ = !controls.showZ;
-      break;
-    // case 'c':
-    //   const position = camera.position.clone();
-    //   camera = camera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
-    //   camera.position.copy(position);
-    //   orbit.object = camera;
-    //   controls.camera = camera;
-    //   camera.lookAt(orbit.target.x, orbit.target.y, orbit.target.z);
-    //   onWindowResize();
-    //   break;
-    // case 'v':
-    //   const randomFoV = Math.random() + 0.1;
-    //   const randomZoom = Math.random() + 0.1;
-    //   cameraPersp.fov = randomFoV * 160;
-    //   cameraOrtho.bottom = - randomFoV * 500;
-    //   cameraOrtho.top = randomFoV * 500;
-    //   cameraPersp.zoom = randomZoom * 5;
-    //   cameraOrtho.zoom = randomZoom * 5;
-    //   onWindowResize();
-    //   break;
-    case '+':
-      controls.setSize(controls.size + 0.1);
-      break;
-    case '-':
-      controls.setSize(Math.max(controls.size - 0.1, 0.1));
-      break;
-    case ' ':
-      controls.enabled = !controls.enabled;
-      break;
-    case 'Shift':
-      controls.setTranslationSnap(0.5);
-      controls.setRotationSnap(THREE.MathUtils.degToRad(15));
-      controls.setScaleSnap(0.5);
-      break;
-    case 'Escape':
-      controls.detach();
-      break;
-    case 'Delete':
-      raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid));
-      controls.object.geometry.dispose();
-      controls.object.material.dispose();
-      scene.remove(controls.object);
-      controls.detach();
-      break;
+  if (controls.object !== undefined) {
+    switch (event.key) {
+      case 'q':
+        controls.setSpace(controls.space === 'local' ? 'world' : 'local');
+        break;
+      case 'w':
+        controls.setMode('translate');
+        break;
+      case 'e':
+        controls.setMode('rotate');
+        break;
+      case 'r':
+        controls.setMode('scale');
+        break;
+      case 'x':
+        controls.showX = !controls.showX;
+        break;
+      case 'y':
+        controls.showY = !controls.showY;
+        break;
+      case 'z':
+        controls.showZ = !controls.showZ;
+        break;
+      // case 'c':
+      //   const position = camera.position.clone();
+      //   camera = camera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
+      //   camera.position.copy(position);
+      //   orbit.object = camera;
+      //   controls.camera = camera;
+      //   camera.lookAt(orbit.target.x, orbit.target.y, orbit.target.z);
+      //   onWindowResize();
+      //   break;
+      // case 'v':
+      //   const randomFoV = Math.random() + 0.1;
+      //   const randomZoom = Math.random() + 0.1;
+      //   cameraPersp.fov = randomFoV * 160;
+      //   cameraOrtho.bottom = - randomFoV * 500;
+      //   cameraOrtho.top = randomFoV * 500;
+      //   cameraPersp.zoom = randomZoom * 5;
+      //   cameraOrtho.zoom = randomZoom * 5;
+      //   onWindowResize();
+      //   break;
+      case '+':
+        controls.setSize(controls.size + 0.1);
+        break;
+      case '-':
+        controls.setSize(Math.max(controls.size - 0.1, 0.1));
+        break;
+      case ' ':
+        controls.enabled = !controls.enabled;
+        break;
+      case 'Shift':
+        controls.setTranslationSnap(0.5);
+        controls.setRotationSnap(THREE.MathUtils.degToRad(15));
+        controls.setScaleSnap(0.5);
+        break;
+      case 'Escape':
+        controls.detach();
+        break;
+      case 'Delete':
+        raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid));
+        controls.object.geometry.dispose();
+        controls.object.material.dispose();
+        scene.remove(controls.object);
+        controls.detach();
+        break;
+    }
   }
 });
 
