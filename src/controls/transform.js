@@ -89,6 +89,10 @@ document.addEventListener('keydown', event => {
     case 'Escape':
       controls.detach();
       break;
+    case 'Delete':
+      scene.remove(controls.object);
+      controls.detach();
+      break;
   }
 });
 

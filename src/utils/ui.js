@@ -42,12 +42,23 @@ function updateUIscale(x, y, z) {
 
 /**
  * Updates material color of 'object'
- * @param {THREE.Object3D} object
+ * @param {THREE.Object3D} object object to update material color of
  */
-function updateMaterialColor(object) {
+function updateObjectMaterialColor(object) {
   const color = ui.color.value.replace('#', '0x');
 
   object.material.color.setHex(color);
+}
+
+/**
+ * Updates material UI
+ * @param {THREE.Object3D} object object to get material properties from
+ */
+function updateMaterialProperties(object) {
+  ui.color.value = '#' + object.material.color.getHexString();
+  ui.metalness.value = object.material.metalness;
+  ui.opacity.value = object.material.opacity;
+  ui.roughness.value = object.material.roughness;
 }
 
 /**
@@ -60,7 +71,8 @@ function resetUI() {
 }
 
 /**
- * Updates UI, should probably seperate functionality with updating material color
+ * Updates all UI elements
+ * Should probably seperate functionality with updating material color
  */
 function updateUI() {
   if (TRANSFORM.controls.object === undefined) {
@@ -69,7 +81,8 @@ function updateUI() {
     updateUIposition(TRANSFORM.controls.object.position.x, TRANSFORM.controls.object.position.y, TRANSFORM.controls.object.position.z);
     updateUIrotation(TRANSFORM.controls.object.rotation.x, TRANSFORM.controls.object.rotation.y, TRANSFORM.controls.object.rotation.z);
     updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
-    updateMaterialColor(TRANSFORM.controls.object);
+    updateObjectMaterialColor(TRANSFORM.controls.object);
+    updateMaterialProperties(TRANSFORM.controls.object)
   }
 }
 
