@@ -3,8 +3,8 @@
 import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
 import {scene, camera} from '/src/main.js';
-import {raycasterObjects} from '/src/utils/object.js';
 import {ui} from '/src/configs/ui.js';
+import {raycasterObjects} from '/src/utils/object.js';
 
 const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -26,7 +26,7 @@ window.addEventListener('mousemove', event => {
  */
 function clickedUI(event) {
   for (let i = 0; i < event.path.length; i++) {
-    if (event.path[i] == ui.scene) {
+    if (event.path[i] === ui.add || ui.scene) {
       return true;
     }
   }
@@ -55,6 +55,7 @@ window.addEventListener('mousedown', event => {
   if (intersects.length === 0 || filtered.length === intersects.length) {
     if (!clickedUI(event)) {
       const selectedObject = TRANSFORM.controls.object;
+
       TRANSFORM.controls.detach();
     }
   }

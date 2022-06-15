@@ -1,8 +1,8 @@
 'use strict';
 
 import * as TRANSFORM from '/src/controls/transform.js';
-import {scene} from '/src/main.js';
 import {ui} from '/src/configs/ui.js';
+import {scene} from '/src/main.js';
 
 /**
  * Updates UI position
@@ -46,6 +46,7 @@ function updateUIscale(x, y, z) {
  */
 function updateMaterialColor(object) {
   const color = ui.color.value.replace('#', '0x');
+
   object.material.color.setHex(color);
 }
 
@@ -56,11 +57,10 @@ function resetUI() {
   updateUIposition(0, 0, 0);
   updateUIrotation(0, 0, 0);
   updateUIscale(0, 0, 0);
-
 }
 
 /**
- * Updates UI. Should probably seperate functionality with updating material color.
+ * Updates UI, should probably seperate functionality with updating material color
  */
 function updateUI() {
   if (TRANSFORM.controls.object === undefined) {
@@ -78,6 +78,7 @@ function updateUI() {
  */
 document.getElementById('sceneObjects').addEventListener('click', event => {
   const object = scene.getObjectById(parseInt(event.target.id));
+
   if (object !== undefined) {
     TRANSFORM.controls.attach(object);
   }
