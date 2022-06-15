@@ -36,10 +36,10 @@ function init() {
 
   OBJECT.addObject('cube', false);
 
-  AMBIENT.addLight();
+  AMBIENT.addLightWithHelper();
 
-  POINT.addLight([3, 3, 3]);
-  POINT.addLight([-1, 6, -3]);
+  POINT.addLightWithHelper([3, 3, 3]);
+  POINT.addLightWithHelper([-1, 6, -3]);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
