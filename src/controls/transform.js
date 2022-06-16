@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
-import {scene, perspective, orthographic, camera, renderer, render} from '/src/main.js';
+import {scene, camera, renderer, render, updateCamera} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
 
@@ -95,7 +95,7 @@ document.addEventListener('keydown', event => {
         break;
       case 'd':
         const position = camera.position.clone();
-        camera = camera.isPerspectiveCamera ? orthographic : perspective;
+        updateCamera('perspective')
         camera.position.copy(position);
         controls.camera = camera;
         camera.updateProjectionMatrix();
