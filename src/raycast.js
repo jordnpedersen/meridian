@@ -25,8 +25,8 @@ window.addEventListener('mousemove', event => {
  * @returns true if scene section is in event's path array
  */
 function clickedUI(event) {
-  for (let i = 0; i < event.path.length; i++) {
-    if (event.path[i] === ui.add || event.path[i] === ui.scene) {
+  for (let i = 0; i < event.composedPath().length; i++) {
+    if (event.composedPath()[i] === ui.add || event.composedPath()[i] === ui.scene) {
       return true;
     }
   }
