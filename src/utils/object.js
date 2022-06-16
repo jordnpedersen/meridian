@@ -32,4 +32,19 @@ function addObject(objectName, attach = true) {
   }
 }
 
-export {raycasterObjects, addObject};
+/**
+ * Deletes an object from the scene
+ * @param {THREE.Object3D} object object to delete from scene
+ */
+function deleteObject(object) {
+  if (object.isMesh) {
+    object.geometry.dispose();
+    object.material.dispose();
+  } else if (object.isLight) {
+    const lightHelper = scene.getObjectByName(object.uuid);
+    deleteObject(lightHelper);
+  }
+  scene.remove(object);
+}
+
+export {raycasterObjects, addObject, deleteObject};
