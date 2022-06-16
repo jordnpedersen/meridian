@@ -14,6 +14,7 @@ let controls;
  */
 function createController() {
   controls = new TransformControls(camera, renderer.domElement);
+  controls.setSize(0.9);
   controls.addEventListener('change', render);
   controls.addEventListener('dragging-changed', event => {
     ORBIT.controls.enabled = !event.value;

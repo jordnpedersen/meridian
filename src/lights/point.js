@@ -3,12 +3,12 @@
 import * as THREE from 'three';
 import {scene} from '/src/main.js';
 
-const POS = [1, 3, 1];
+const POS = [0, 0, 0];
 const COLOR = 0xeeeeee;
 const INTENSITY = 1;
 const DISTANCE = 0;
 const DECAY = 2;
-const HELPER_SIZE = 0.5;
+const HELPER_SIZE = 0.3;
 
 /**
  * Adds a point light to the scene with the following properties
@@ -29,8 +29,8 @@ function addLight(pos = POS, color = COLOR, intensity = INTENSITY, distance = DI
  * @param {THREE.PointLight} light light to replicate helper for
  * @param {float} helperSize size of helper
  */
-function addLightHelper(light, helperSize = HELPER_SIZE) {
-  const lightHelper = new THREE.PointLightHelper(light, helperSize, COLOR);
+function addLightHelper(light, helperSize = HELPER_SIZE, color) {
+  const lightHelper = new THREE.PointLightHelper(light, helperSize, color);
   scene.add(lightHelper);
 }
 
@@ -47,7 +47,7 @@ function addLightWithHelper(pos = POS, color = COLOR, intensity = INTENSITY, dis
   const light = new THREE.PointLight(color, intensity, distance, decay);
   light.position.set(pos[0], pos[1], pos[2]);
   scene.add(light);
-  addLightHelper(light, helperSize);
+  addLightHelper(light, helperSize, color);
 }
 
 export {addLight, addLightHelper, addLightWithHelper};
