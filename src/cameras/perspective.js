@@ -9,10 +9,10 @@ const POS = [0, 3, 6];
 
 /**
  * Creates and returns a perspective camera with the following properties
- * @param {array} pos position represented as 1D array containing x, y, z values
  * @param {float} fov field of view
  * @param {float} near near-plane cut-off distance
  * @param {float} far far-plane cut-off distance
+ * @param {array} pos position represented as 1D array containing x, y, z values
  * @returns perspective camera object
  */
 function createCamera(fov = FOV, near = NEAR, far = FAR, pos = POS) {

@@ -11,12 +11,15 @@ const FAR = 100;
 const POS = [0, 3, 6];
 
 /**
- * Creates and returns a perspective camera with the following properties
- * @param {array} pos position represented as 1D array containing x, y, z values
- * @param {float} fov field of view
+ * Creates and returns an orthographic camera with the following properties
+ * @param {float} left camera frustum left plane
+ * @param {float} right camera frustum right plane
+ * @param {float} top camera frustum top plane
+ * @param {float} bottom camera frustum bottom plane
  * @param {float} near near-plane cut-off distance
  * @param {float} far far-plane cut-off distance
- * @returns perspective camera object
+ * @param {array} pos position represented as 1D array containing x, y, z values
+ * @returns orthographic camera object
  */
 function createCamera(left = LEFT, right = RIGHT, top = TOP, bottom = BOTTOM, near = NEAR, far = FAR, pos = POS) {
   const camera = new THREE.OrthographicCamera(LEFT, RIGHT, TOP, BOTTOM, NEAR, FAR);
