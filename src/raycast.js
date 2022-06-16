@@ -47,17 +47,20 @@ window.addEventListener('mousedown', event => {
   for (let i = 0; i < intersects.length; i++) {
     let selectedObject = intersects[i].object;
 
-    if (selectedObject.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0) && selectedObject.static !== true) {
-      TRANSFORM.controls.attach(selectedObject);
-      break;
+    if (selectedObject.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0)) {
+      if (TRANSFORM.controls.dragging) {
+        return;
+      }
+      if (selectedObject.static !== true) {
+        TRANSFORM.outlineAttach(selectedObject);
+        break;
+      }
     }
   }
 
   if (intersects.length === 0 || filtered.length === intersects.length) {
     if (!clickedUI(event)) {
-      const selectedObject = TRANSFORM.controls.object;
-
-      TRANSFORM.controls.detach();
+      TRANSFORM.outlineDetach(TRANSFORM.controls.object);
     }
   }
 });
