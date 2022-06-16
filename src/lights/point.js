@@ -8,7 +8,7 @@ import * as TRANSFORM from '/src/controls/transform.js';
 import {raycasterObjects} from '/src/utils/object.js';
 
 const POS = [0, 0, 0];
-const COLOR = 0xeeeeee;
+const COLOR = 0xf8f8f8;
 const INTENSITY = 1;
 const DISTANCE = 0;
 const DECAY = 2;

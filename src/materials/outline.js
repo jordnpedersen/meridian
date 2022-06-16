@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 
 const material = new THREE.MeshBasicMaterial({
-  color: 0x006070,
+  color: 0x282828,
   side: THREE.BackSide
 });
 

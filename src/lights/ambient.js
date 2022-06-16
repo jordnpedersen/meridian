@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import {scene} from '/src/main.js';
 
-const COLOR = 0xeeeeee;
+const COLOR = 0xf8f8f8;
 const INTENSITY = 1;
 
 /**

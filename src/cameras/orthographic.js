@@ -7,7 +7,7 @@ const RIGHT = 600 * window.innerWidth / window.innerHeight;
 const TOP = 600;
 const BOTTOM = - 600;
 const NEAR = 0.1;
-const FAR = 100;
+const FAR = 250;
 const POS = [0, 3, 6];
 
 /**

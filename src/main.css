@@ -2,17 +2,17 @@
   font-size: 1.5rem;
 }
 ::selection {
-  background: #006070;
+  background: var(--gray);
 }
 html {
   --gap: 20px;
-  --gray: #222;
+  --gray: #181818;
   color-scheme: dark;
 }
 body {
   font-family: 'Inter', sans-serif;
-  background: #000;
-  color: #fff;
+  background: #080808;
+  color: #f8f8f8;
 }
 section {
   margin: var(--gap);

@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 
 const material = new THREE.MeshLambertMaterial({
-  color: 0x111111,
+  color: 0x181818,
   dithering: true,
   opacity: 1,
   transparent: true
