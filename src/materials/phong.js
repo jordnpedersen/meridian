@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 
 const material = new THREE.MeshPhongMaterial({
-  color: 0x030303,
+  color: 0x111111,
   dithering: true,
   opacity: 1,
   shininess: 30,

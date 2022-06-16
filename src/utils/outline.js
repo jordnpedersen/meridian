@@ -11,7 +11,7 @@ function createOutline(object) {
   if (!object.hasOutline) {
     const outlineMesh = new THREE.Mesh(object.geometry, OUTLINE.material);
     outlineMesh.position.copy(object.position);
-    outlineMesh.scale.multiplyScalar(1.05);
+    outlineMesh.scale.multiplyScalar(1.03);
     outlineMesh.static = true;
     outlineMesh.name = 'outline';
     object.add(outlineMesh);

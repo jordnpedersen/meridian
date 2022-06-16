@@ -26,7 +26,7 @@ window.addEventListener('mousemove', event => {
  */
 function clickedUI(event) {
   for (let i = 0; i < event.composedPath().length; i++) {
-    if (event.composedPath()[i] === ui.add || event.composedPath()[i] === ui.scene) {
+    if (event.composedPath()[i] === ui.add || event.composedPath()[i] === ui.edit) {
       return true;
     }
   }

@@ -2,7 +2,7 @@
 
 const ui = {
   'add': document.getElementById('add'),
-  'scene': document.getElementById('scene'),
+  'edit': document.getElementById('edit'),
   'sceneObjects': document.getElementById('sceneObjects'),
   'position': {
     'x': document.getElementById('position-x'),
