@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import {scene, camera, renderer} from '/src/main.js';
 import * as OUTLINE from '/src/materials/outline.js';
+import {deleteObject} from '/src/utils/object.js';
 
 /**
  * Checks to see if an outline mesh already exists
@@ -18,9 +19,7 @@ function outlineExists() {
 
 function deleteOutline() {
   const outline = scene.getObjectByName('outline');
-  outline.geometry.dispose();
-  outline.material.dispose();
-  scene.remove(outline);
+  deleteObject(outline);
 }
 
 /**
@@ -28,7 +27,7 @@ function deleteOutline() {
  * @param {THREE.Object3D} object object to create outline of
  */
 function createOutline(object) {
-  if (!outlineExists()) {
+  if (!outlineExists() && object.isMesh) {
     const outlineMesh = new THREE.Mesh(object.geometry, OUTLINE.material);
     outlineMesh.position.copy(object.position);
     outlineMesh.static = true;
@@ -43,7 +42,7 @@ function createOutline(object) {
  * To be called from animate()
  */
 function setOutline() {
-  try {
+  try { // TODO: Maybe use `if (outlineExists())` instead of try/catch
     const object = scene.getObjectByName('outline');
 
     object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.00445355992)
@@ -53,9 +52,13 @@ function setOutline() {
     object.position.x = object.pseudoParent.position.x;
     object.position.y = object.pseudoParent.position.y;
     object.position.z = object.pseudoParent.position.z;
+
+    object.rotation.x = object.pseudoParent.rotation.x;
+    object.rotation.y = object.pseudoParent.rotation.y;
+    object.rotation.z = object.pseudoParent.rotation.z;
   } catch (err) {
     // Do nothing
-    console.log(err)
+    // console.log(err)
   }
 }
 
