@@ -49,6 +49,7 @@ window.addEventListener('mousedown', event => {
 
     if (selectedObject.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0) && selectedObject.static !== true) {
       TRANSFORM.controls.attach(selectedObject);
+      break;
     }
   }
 
