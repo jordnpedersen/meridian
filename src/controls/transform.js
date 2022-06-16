@@ -128,7 +128,9 @@ document.addEventListener('keydown', event => {
         controls.setScaleSnap(0.5);
         break;
       case 'Escape':
-        deleteOutline();
+        if (controls.object.isMesh) {
+          deleteOutline();
+        }
         controls.detach();
         break;
       case 'Delete':
