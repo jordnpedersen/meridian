@@ -16,6 +16,13 @@ function outlineExists() {
   return false;
 }
 
+function deleteOutline() {
+  const outline = scene.getObjectByName('outline');
+  outline.geometry.dispose();
+  outline.material.dispose();
+  scene.remove(outline);
+}
+
 /**
  * Creates a visual outline of an object
  * @param {THREE.Object3D} object object to create outline of
@@ -52,4 +59,4 @@ function setOutline() {
   }
 }
 
-export {createOutline, outlineExists, setOutline};
+export {createOutline, deleteOutline, setOutline, outlineExists};
