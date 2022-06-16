@@ -5,7 +5,7 @@ import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
 import {scene, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
-import {createOutline} from '/src/utils/outline.js';
+import {createOutline, outlineExists} from '/src/utils/outline.js';
 
 let controls;
 
@@ -41,8 +41,6 @@ function outlineAttach(object) {
     outlineDetach(controls.object);
   }
   createOutline(object);
-  const outline = object.getObjectByName('outline');
-  outline.visible = true;
   controls.attach(object);
 }
 
@@ -55,9 +53,11 @@ function outlineDetach(object) {
   if (object === undefined) {
     return;
   }
-  if (object.hasOwnProperty('hasOutline')) {
-    const outline = object.getObjectByName('outline');
-    outline.visible = false;
+  if (outlineExists()) {
+    const outline = scene.getObjectByName('outline');
+    outline.geometry.dispose();
+    outline.material.dispose();
+    scene.remove(outline);
     controls.detach(object);
   }
 }
