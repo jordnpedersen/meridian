@@ -95,7 +95,7 @@ document.addEventListener('keydown', event => {
         break;
       case 'd':
         const position = camera.position.clone();
-        updateCamera('perspective')
+        updateCamera('perspective');
         camera.position.copy(position);
         controls.camera = camera;
         camera.updateProjectionMatrix();
