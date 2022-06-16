@@ -5,7 +5,7 @@ import {scene} from '/src/main.js';
 
 const COLOR = 0xeeeeee;
 const INTENSITY = 1;
-const HELPER_SIZE = 1;
+const HELPER_SIZE = 0.5;
 
 /**
  * Adds an ambient light to the scene with the following properties
@@ -23,7 +23,7 @@ function addLight(color = COLOR, intensity = INTENSITY) {
  * @param {float} helperSize size of helper
  */
 function addLightHelper(light, helperSize = HELPER_SIZE) {
-  const lightHelper = new THREE.PointLightHelper(light, helperSize);
+  const lightHelper = new THREE.PointLightHelper(light, helperSize, COLOR);
   scene.add(lightHelper);
 }
 
