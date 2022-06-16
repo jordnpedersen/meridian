@@ -135,7 +135,12 @@ document.addEventListener('keydown', event => {
         if (controls.object.isMesh) {
           deleteOutline();
         }
-        raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid));
+        if (controls.object.isLight) {
+          const lightHelper = scene.getObjectByName(controls.object.uuid);
+          raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === lightHelper.uuid), 1);
+        } else {
+          raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid), 1);
+        }
         deleteObject(controls.object);
         controls.detach();
         break;
