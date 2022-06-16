@@ -2,6 +2,7 @@
 
 import * as THREE from 'three';
 import * as PERSPECTIVE from '/src/cameras/perspective.js';
+import * as ORTHOGRAPHIC from '/src/cameras/orthographic.js';
 import * as ORBIT from '/src/controls/orbit.js';
 import * as TRANSFORM from '/src/controls/transform.js';
 import * as OBJECT from '/src/utils/object.js';
@@ -12,7 +13,7 @@ import {raycast} from '/src/raycast.js';
 import {setOutline} from '/src/utils/outline.js';
 import '/src/events.js';
 
-let scene, camera, renderer;
+let scene, perspective, orthographic, camera, renderer;
 
 init();
 animate();
@@ -21,7 +22,9 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
 
-  camera = PERSPECTIVE.createCamera();
+  perspective = PERSPECTIVE.createCamera();
+  orthographic = ORTHOGRAPHIC.createCamera();
+  camera = perspective;
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -73,4 +76,4 @@ function animate() {
 
 document.oncontextmenu = () => false;
 
-export {scene, camera, renderer, render};
+export {scene, perspective, orthographic, camera, renderer, render};
