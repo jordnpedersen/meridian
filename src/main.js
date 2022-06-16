@@ -55,6 +55,13 @@ function init() {
 }
 
 /**
+ * Toggles between orthographic / perspective camera
+ */
+function updateCamera() {
+  camera = camera.isPerspectiveCamera ? orthographic : perspective;
+}
+
+/**
  * Renders the scene
  * Seperated from 'animate()' function for performance reasons as this function needs to be called elsewhere
  */
@@ -76,4 +83,4 @@ function animate() {
 
 document.oncontextmenu = () => false;
 
-export {scene, perspective, orthographic, camera, renderer, render};
+export {scene, camera, renderer, render, updateCamera};
