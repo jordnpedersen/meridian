@@ -93,7 +93,7 @@ document.getElementById('sceneObjects').addEventListener('click', event => {
   const object = scene.getObjectById(parseInt(event.target.id));
 
   if (object !== undefined) {
-    TRANSFORM.controls.attach(object);
+    TRANSFORM.outlineAttach(object);
   }
 });
 
