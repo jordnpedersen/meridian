@@ -6,6 +6,7 @@ import {TransformControls} from 'TransformControls';
 import {scene, perspective, orthographic, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
+import {deleteObject} from '/src/utils/object.js';
 
 let controls;
 
@@ -56,8 +57,8 @@ function outlineDetach(object) {
   }
   if (outlineExists()) {
     deleteOutline();
-    controls.detach(object);
   }
+  controls.detach(object);
 }
 
 /**
@@ -131,11 +132,11 @@ document.addEventListener('keydown', event => {
         controls.detach();
         break;
       case 'Delete':
+        if (controls.object.isMesh) {
+          deleteOutline();
+        }
         raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid));
-        controls.object.geometry.dispose();
-        controls.object.material.dispose();
-        scene.remove(controls.object);
-        deleteOutline();
+        deleteObject(controls.object);
         controls.detach();
         break;
     }
