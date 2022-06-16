@@ -5,7 +5,7 @@ import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
 import {scene, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
-import {createOutline, outlineExists} from '/src/utils/outline.js';
+import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
 
 let controls;
 
@@ -55,10 +55,7 @@ function outlineDetach(object) {
     return;
   }
   if (outlineExists()) {
-    const outline = scene.getObjectByName('outline');
-    outline.geometry.dispose();
-    outline.material.dispose();
-    scene.remove(outline);
+    deleteOutline();
     controls.detach(object);
   }
 }
@@ -132,6 +129,7 @@ document.addEventListener('keydown', event => {
         controls.setScaleSnap(0.5);
         break;
       case 'Escape':
+        deleteOutline();
         controls.detach();
         break;
       case 'Delete':
@@ -139,6 +137,7 @@ document.addEventListener('keydown', event => {
         controls.object.geometry.dispose();
         controls.object.material.dispose();
         scene.remove(controls.object);
+        deleteOutline();
         controls.detach();
         break;
     }
