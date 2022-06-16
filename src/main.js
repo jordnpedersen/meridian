@@ -20,7 +20,7 @@ animate();
 
 function init() {
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(0x080808);
 
   perspective = PERSPECTIVE.createCamera();
   orthographic = ORTHOGRAPHIC.createCamera();
@@ -35,7 +35,7 @@ function init() {
 
   TRANSFORM.createController();
 
-  const grid = new THREE.GridHelper(30, 30, 0x333333, 0x222222);
+  const grid = new THREE.GridHelper(30, 30, 0x282828, 0x181818);
   scene.add(grid);
 
   OBJECT.addObject('cube', false);
