@@ -28,7 +28,7 @@ function addObject(objectName, attach = true) {
   ID.assignID(object);
 
   if (attach) {
-    TRANSFORM.controls.attach(object);
+    TRANSFORM.outlineAttach(object);
   }
 }
 
