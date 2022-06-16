@@ -5,6 +5,7 @@ import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
 import {scene, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
+import {createOutline} from '/src/utils/outline.js';
 
 let controls;
 
@@ -25,6 +26,40 @@ function createController() {
   scene.add(controls);
 
   raycasterObjects.push(controls);
+}
+
+/**
+ * Selects an object via controls and enables it's outline
+ * @param {THREE.Object3D} object object to attach and apply outline to
+ * @returns
+ */
+function outlineAttach(object) {
+  if (object === undefined) {
+    return;
+  }
+  if (controls.object !== object) {
+    outlineDetach(controls.object);
+  }
+  createOutline(object);
+  const outline = object.getObjectByName('outline');
+  outline.visible = true;
+  controls.attach(object);
+}
+
+/**
+ * Detaches from an object via controls and disables it's outline
+ * @param {THREE.Object3D} object object to detach from and remove outline from
+ * @returns
+ */
+function outlineDetach(object) {
+  if (object === undefined) {
+    return;
+  }
+  if (object.hasOwnProperty('hasOutline')) {
+    const outline = object.getObjectByName('outline');
+    outline.visible = false;
+    controls.detach(object);
+  }
 }
 
 /**
@@ -111,4 +146,4 @@ document.addEventListener('keyup', event => {
   }
 });
 
-export {controls, createController};
+export {controls, createController, outlineAttach, outlineDetach};
