@@ -47,12 +47,16 @@ window.addEventListener('mousedown', event => {
   for (let i = 0; i < intersects.length; i++) {
     let selectedObject = intersects[i].object;
 
-    if (selectedObject.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0)) {
+    if (selectedObject.isMesh && (pointer.x !== 0 && pointer.y !== 0)) {
       if (TRANSFORM.controls.dragging) {
         return;
       }
       if (selectedObject.static !== true) {
-        TRANSFORM.outlineAttach(selectedObject);
+        if (selectedObject.isHelper) {
+          TRANSFORM.outlineAttach(selectedObject.light);
+        } else {
+          TRANSFORM.outlineAttach(selectedObject);
+        }
         break;
       }
     }
