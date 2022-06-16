@@ -81,8 +81,10 @@ function updateUI() {
     updateUIposition(TRANSFORM.controls.object.position.x, TRANSFORM.controls.object.position.y, TRANSFORM.controls.object.position.z);
     updateUIrotation(TRANSFORM.controls.object.rotation.x, TRANSFORM.controls.object.rotation.y, TRANSFORM.controls.object.rotation.z);
     updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
-    updateObjectMaterialColor(TRANSFORM.controls.object);
-    updateMaterialProperties(TRANSFORM.controls.object)
+    if (TRANSFORM.controls.object.isMesh) {
+      updateObjectMaterialColor(TRANSFORM.controls.object);
+      updateMaterialProperties(TRANSFORM.controls.object)
+    }
   }
 }
 
