@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
-import {scene, camera, renderer, render} from '/src/main.js';
+import {scene, perspective, orthographic, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline} from '/src/utils/outline.js';
 
@@ -96,15 +96,13 @@ document.addEventListener('keydown', event => {
       case 's':
         controls.setSize(Math.max(controls.size - 0.1, 0.1));
         break;
-      // case 'd':
-      //   const position = camera.position.clone();
-      //   camera = camera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
-      //   camera.position.copy(position);
-      //   orbit.object = camera;
-      //   controls.camera = camera;
-      //   camera.lookAt(orbit.target.x, orbit.target.y, orbit.target.z);
-      //   onWindowResize();
-      //   break;
+      case 'd':
+        const position = camera.position.clone();
+        camera = camera.isPerspectiveCamera ? orthographic : perspective;
+        camera.position.copy(position);
+        controls.camera = camera;
+        camera.updateProjectionMatrix();
+        break;
       case '-':
       case '_':
         if (camera.fov > 120) {
