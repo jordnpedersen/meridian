@@ -84,4 +84,4 @@ function animate() {
 
 document.oncontextmenu = () => false;
 
-export {scene, camera, renderer, render, updateCamera};
+export {scene, camera, perspective, renderer, render, updateCamera};

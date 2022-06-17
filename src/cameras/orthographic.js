@@ -2,11 +2,14 @@
 
 import * as THREE from 'three';
 
-const LEFT = - 600 * window.innerWidth / window.innerHeight;
-const RIGHT = 600 * window.innerWidth / window.innerHeight;
-const TOP = 600;
-const BOTTOM = - 600;
-const NEAR = 0.1;
+const frustum = 8;
+const aspect = window.innerWidth / window.innerHeight;
+
+const LEFT = frustum * aspect / - 2;
+const RIGHT = frustum * aspect / 2;
+const TOP = frustum / 2;
+const BOTTOM = frustum / - 2;
+const NEAR = - 250;
 const FAR = 250;
 const POS = [0, 3, 9];
 

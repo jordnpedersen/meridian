@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
-import {scene, camera, renderer, render, updateCamera} from '/src/main.js';
+import {scene, camera, perspective, renderer, render, updateCamera} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
 import {deleteObject} from '/src/utils/object.js';
@@ -79,15 +79,6 @@ document.addEventListener('keydown', event => {
       case 'r':
         controls.setMode('scale');
         break;
-      case 'x':
-        controls.showX = !controls.showX;
-        break;
-      case 'y':
-        controls.showY = !controls.showY;
-        break;
-      case 'z':
-        controls.showZ = !controls.showZ;
-        break;
       case 'a':
         controls.setSize(controls.size + 0.1);
         break;
@@ -96,31 +87,53 @@ document.addEventListener('keydown', event => {
         break;
       case 'd':
         const position = camera.position.clone();
-        updateCamera('perspective');
+        updateCamera();
         camera.position.copy(position);
+        camera.lookAt(0, 0, 0);
         controls.camera = camera;
         camera.updateProjectionMatrix();
         break;
+      case 'f':
+        ORBIT.controls.target = controls.object.position;
+        camera.lookAt(controls.object.position);
+        break;
+      case 'z':
+        controls.showZ = !controls.showZ;
+        break;
+      case 'x':
+        controls.showX = !controls.showX;
+        break;
+      case 'c':
+        controls.showY = !controls.showY;
+        break;
+      case 'v':
+        controls.enabled = !controls.enabled;
+        break;
       case '-':
       case '_':
-        if (camera.fov > 120) {
-          camera.fov = 120;
+        if (camera === perspective) {
+          if (camera.fov > 100) {
+            camera.fov = 100;
+          } else {
+            camera.fov += 1;
+          }
         } else {
-          camera.fov += 1;
+          camera.zoom -= 0.01;
         }
         camera.updateProjectionMatrix();
         break;
       case '=':
       case '+':
-        if (camera.fov < 20) {
-          camera.fov = 20;
+        if (camera === perspective) {
+          if (camera.fov < 20) {
+            camera.fov = 20;
+          } else {
+            camera.fov -= 1;
+          }
         } else {
-          camera.fov -= 1;
+          camera.zoom += 0.02;
         }
         camera.updateProjectionMatrix();
-        break;
-      case ' ':
-        controls.enabled = !controls.enabled;
         break;
       case 'Shift':
         controls.setTranslationSnap(0.5);
