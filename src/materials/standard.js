@@ -7,7 +7,7 @@ const material = new THREE.MeshStandardMaterial({
   dithering: true,
   metalness: 0,
   opacity: 1,
-  roughness: 0.5,
+  roughness: 0.6,
   transparent: true
 });
 

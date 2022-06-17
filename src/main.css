@@ -49,7 +49,7 @@ hr {
   grid-template-columns: auto auto auto;
 }
 input {
-  max-width: 33px;
+  max-width: calc(var(--gap) * 2);
   outline: none;
   background: transparent;
 }
@@ -72,13 +72,12 @@ input[type=color] {
 }
 ::-moz-color-swatch {
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 ::-webkit-color-swatch {
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 ::-webkit-color-swatch-wrapper {
-  border-radius: 6px;
   padding: 0;
 }
