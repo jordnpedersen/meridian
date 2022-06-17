@@ -22,7 +22,11 @@ const ui = {
   'color': document.getElementById('color'),
   'metalness': document.getElementById('metalness'),
   'opacity': document.getElementById('opacity'),
-  'roughness': document.getElementById('roughness')
+  'roughness': document.getElementById('roughness'),
+  'addSection': {
+    'objects': document.getElementById('addObjects'),
+    'lights': document.getElementById('addLights')
+  }
 }
 
 export {ui};
