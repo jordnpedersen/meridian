@@ -2,10 +2,10 @@
 
 import * as THREE from 'three';
 
-const FOV = 70;
+const FOV = 50;
 const NEAR = 0.1;
 const FAR = 250;
-const POS = [0, 3, 6];
+const POS = [0, 3, 9];
 
 /**
  * Creates and returns a perspective camera with the following properties

@@ -8,7 +8,7 @@ const TOP = 600;
 const BOTTOM = - 600;
 const NEAR = 0.1;
 const FAR = 250;
-const POS = [0, 3, 6];
+const POS = [0, 3, 9];
 
 /**
  * Creates and returns an orthographic camera with the following properties
