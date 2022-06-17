@@ -24,6 +24,7 @@ for (let child of light_li) {
     switch (child.children.item(0).outerText) {
       case 'point':
         POINT.addLightWithHelper();
+        break;
       case 'spot':
         console.log('spot lights are not real. wake up.');
         break;
