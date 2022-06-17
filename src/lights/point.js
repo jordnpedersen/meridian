@@ -51,7 +51,7 @@ function addLightHelper(light, helperSize = HELPER_SIZE, color) {
  * @param {float} decay decay of light
  * @param {float} helperSize size of helper
  */
-function addLightWithHelper(pos = POS, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, helperSize = HELPER_SIZE) {
+function addLightWithHelper(attach = true, pos = POS, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, helperSize = HELPER_SIZE) {
   const light = new THREE.PointLight(color, intensity, distance, decay);
   light.position.set(pos[0], pos[1], pos[2]);
   light.name = NAME.getName('point');
@@ -59,7 +59,9 @@ function addLightWithHelper(pos = POS, color = COLOR, intensity = INTENSITY, dis
 
   ID.assignID(light);
 
-  TRANSFORM.outlineAttach(light);
+  if (attach) {
+    TRANSFORM.outlineAttach(light);
+  }
 
   addLightHelper(light, helperSize, color);
 }

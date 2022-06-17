@@ -43,8 +43,8 @@ function init() {
 
   AMBIENT.addLight();
 
-  POINT.addLightWithHelper([1, 3, -3], 0x408040);
-  POINT.addLightWithHelper([3, 3, 3], 0x804040);
+  POINT.addLightWithHelper(false, [1, 3, -3], 0x408040);
+  POINT.addLightWithHelper(false, [3, 3, 3], 0x804040);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
