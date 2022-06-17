@@ -2,6 +2,7 @@
 
 import * as OBJECT from '/src/utils/object.js';
 import * as POINT from '/src/lights/point.js';
+import * as SPOT from '/src/lights/spot.js';
 import {ui} from '/src/configs/ui.js'
 
 const obj_li = ui.addSection.objects.getElementsByTagName('li');
@@ -23,10 +24,10 @@ for (let child of light_li) {
   childID.addEventListener('click', () => {
     switch (child.children.item(0).outerText) {
       case 'point':
-        POINT.addLightWithHelper();
+        POINT.addLight();
         break;
       case 'spot':
-        console.log('spot lights are not real. wake up.');
+        SPOT.addLight();
         break;
     }
   });

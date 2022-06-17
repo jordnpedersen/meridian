@@ -7,7 +7,7 @@ const material = new THREE.MeshPhongMaterial({
   dithering: true,
   opacity: 1,
   shininess: 30,
-  transparent: true
+  transparent: false
 });
 
 export {material};

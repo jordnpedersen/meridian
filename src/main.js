@@ -8,6 +8,7 @@ import * as TRANSFORM from '/src/controls/transform.js';
 import * as OBJECT from '/src/utils/object.js';
 import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
+import * as SPOT from '/src/lights/spot.js';
 import * as UI from '/src/utils/ui.js';
 import {raycast} from '/src/raycast.js';
 import {setOutline} from '/src/utils/outline.js';
@@ -43,8 +44,10 @@ function init() {
 
   AMBIENT.addLight();
 
-  POINT.addLightWithHelper(false, [1, 3, -3], 0x408040);
-  POINT.addLightWithHelper(false, [3, 3, 3], 0x804040);
+  POINT.addLight([1, 3, -3], 0x408040);
+  POINT.addLight([3, 3, 3], 0x804040);
+
+  SPOT.addLight([-3, 1, -3], 0x804080);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;

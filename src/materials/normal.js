@@ -5,7 +5,7 @@ import * as THREE from 'three';
 const material = new THREE.MeshNormalMaterial({
   dithering: true,
   opacity: 1,
-  transparent: true
+  transparent: false
 });
 
 export {material};

@@ -1,8 +1,8 @@
 'use strict';
 
 import * as THREE from 'three';
-import {scene, camera, renderer} from '/src/main.js';
 import * as OUTLINE from '/src/materials/outline.js';
+import {scene, camera} from '/src/main.js';
 import {deleteObject} from '/src/utils/object.js';
 
 /**
@@ -45,9 +45,9 @@ function setOutline() {
   try { // TODO: Maybe use `if (outlineExists())` instead of try/catch
     const object = scene.getObjectByName('outline');
 
-    object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.00445355992)
-    object.scale.y = Math.abs(object.pseudoParent.scale.y) + (camera.position.distanceTo(object.position) * 0.00445355992)
-    object.scale.z = Math.abs(object.pseudoParent.scale.z) + (camera.position.distanceTo(object.position) * 0.00445355992)
+    object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.005);
+    object.scale.y = Math.abs(object.pseudoParent.scale.y) + (camera.position.distanceTo(object.position) * 0.005);
+    object.scale.z = Math.abs(object.pseudoParent.scale.z) + (camera.position.distanceTo(object.position) * 0.005);
 
     object.position.x = object.pseudoParent.position.x;
     object.position.y = object.pseudoParent.position.y;
@@ -57,8 +57,6 @@ function setOutline() {
     object.rotation.y = object.pseudoParent.rotation.y;
     object.rotation.z = object.pseudoParent.rotation.z;
   } catch (err) {
-    // Do nothing
-    // console.log(err)
   }
 }
 

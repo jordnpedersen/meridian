@@ -6,7 +6,7 @@ const material = new THREE.MeshLambertMaterial({
   color: 0x181818,
   dithering: true,
   opacity: 1,
-  transparent: true
+  transparent: false
 });
 
 export {material};

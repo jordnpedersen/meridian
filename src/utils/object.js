@@ -41,8 +41,8 @@ function deleteObject(object) {
     object.geometry.dispose();
     object.material.dispose();
   } else if (object.isLight) {
-    const lightHelper = scene.getObjectByName(object.uuid);
-    deleteObject(lightHelper);
+    const helper = scene.getObjectByName(object.uuid);
+    deleteObject(helper);
   }
   scene.remove(object);
 }
