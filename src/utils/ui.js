@@ -51,14 +51,28 @@ function updateObjectMaterialColor(object) {
 }
 
 /**
+ * Updates material color of 'light'
+ * @param {THREE.Object3D} light light to update material color of
+ */
+function updateLightMaterialColor(light) {
+  const color = ui.color.value.replace('#', '0x');
+
+  light.color.setHex(color);
+}
+
+/**
  * Updates material UI
  * @param {THREE.Object3D} object object to get material properties from
  */
 function updateMaterialProperties(object) {
-  ui.color.value = '#' + object.material.color.getHexString();
-  ui.metalness.value = object.material.metalness;
-  ui.opacity.value = object.material.opacity;
-  ui.roughness.value = object.material.roughness;
+  if (object.isMesh) {
+    ui.color.value = '#' + object.material.color.getHexString();
+    ui.metalness.value = object.material.metalness;
+    ui.opacity.value = object.material.opacity;
+    ui.roughness.value = object.material.roughness;
+  } else if (object.isLight) {
+    ui.color.value = '#' + object.color.getHexString();
+  }
 }
 
 /**
@@ -83,8 +97,10 @@ function updateUI() {
     updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
     if (TRANSFORM.controls.object.isMesh) {
       updateObjectMaterialColor(TRANSFORM.controls.object);
-      updateMaterialProperties(TRANSFORM.controls.object)
+    } else if (TRANSFORM.controls.object.isLight) {
+      updateLightMaterialColor(TRANSFORM.controls.object);
     }
+    updateMaterialProperties(TRANSFORM.controls.object);
   }
 }
 
