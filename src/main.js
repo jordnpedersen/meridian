@@ -11,7 +11,7 @@ import * as POINT from '/src/lights/point.js';
 import * as UI from '/src/utils/ui.js';
 import {raycast} from '/src/raycast.js';
 import {setOutline} from '/src/utils/outline.js';
-import '/src/events.js';
+import '/src/events/add.js';
 
 let scene, perspective, orthographic, camera, renderer;
 
