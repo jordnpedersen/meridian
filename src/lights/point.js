@@ -54,7 +54,7 @@ function addLightHelper(light, helperSize = HELPER_SIZE, color) {
 function addLightWithHelper(pos = POS, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, helperSize = HELPER_SIZE) {
   const light = new THREE.PointLight(color, intensity, distance, decay);
   light.position.set(pos[0], pos[1], pos[2]);
-  light.name = NAME.getName('light');
+  light.name = NAME.getName('point');
   scene.add(light);
 
   ID.assignID(light);
