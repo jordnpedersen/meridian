@@ -25,9 +25,7 @@ for (let child of light_li) {
       case 'point':
         POINT.addLightWithHelper();
       case 'spot':
-        break;
-      case 'ambient':
-        console.log('ambient lights are not real. wake up.');
+        console.log('spot lights are not real. wake up.');
         break;
     }
   });
