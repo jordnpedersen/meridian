@@ -39,6 +39,10 @@ function clickedUI(event) {
  * @param {event} event
  */
 window.addEventListener('mousedown', event => {
+  if (clickedUI(event)) {
+    return;
+  }
+
   const intersects = raycaster.intersectObjects(raycasterObjects);
   const filtered = intersects.filter(e => e.object.static === true && e.object.type !== 'Mesh');
 
