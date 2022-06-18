@@ -22,7 +22,7 @@ animate();
 function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x080808);
-  scene.fog = new THREE.FogExp2(0x080808, 0.03);
+  scene.fog = new THREE.FogExp2(0x080808, 0.01);
 
   perspective = PERSPECTIVE.createCamera();
   orthographic = ORTHOGRAPHIC.createCamera();
@@ -37,7 +37,7 @@ function init() {
 
   TRANSFORM.createController();
 
-  const grid = new THREE.GridHelper(500, 500, 0x282828, 0x181818);
+  const grid = new THREE.GridHelper(1000, 1000, 0x282828, 0x181818);
   scene.add(grid);
 
   OBJECT.addObject('cube', false);
@@ -47,7 +47,7 @@ function init() {
   POINT.addLight([1, 3, -3], 0x408040);
   POINT.addLight([3, 3, 3], 0x804040);
 
-  SPOT.addLight([-3, 1, -3], 0x804080);
+  SPOT.addLight([-3, 2, -3], 0x804080);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;

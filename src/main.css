@@ -5,7 +5,7 @@
   background: var(--gray);
 }
 html {
-  --gap: 20px;
+  --gap: 2rem;
   --gray: #181818;
   color-scheme: dark;
 }
@@ -16,7 +16,7 @@ body {
 }
 section {
   margin: var(--gap);
-  border: 1px solid var(--gray);
+  border: 0.1rem solid var(--gray);
   border-radius: var(--gap);
   padding: var(--gap);
   position: fixed;
@@ -42,7 +42,7 @@ button {
   right: 0;
 }
 hr {
-  height: 1px;
+  height: 0.1rem;
   background: var(--gray);
 }
 .xyz {
@@ -61,9 +61,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 input[type=color] {
-  border: 1px solid var(--gray);
-  border-radius: 6px;
-  max-height: 19px;
+  border: 0.1rem solid var(--gray);
+  border-radius: 0.6rem;
+  max-height: 1.9rem;
   vertical-align: middle;
   appearance: none;
   -moz-appearance: none;
@@ -72,12 +72,26 @@ input[type=color] {
 }
 ::-moz-color-swatch {
   border: 0;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 ::-webkit-color-swatch {
   border: 0;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 ::-webkit-color-swatch-wrapper {
   padding: 0;
+}
+input[type=checkbox] {
+  border: 0.1rem solid var(--gray);
+  border-radius: 0.6rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  vertical-align: middle;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+input[type=checkbox]:checked {
+  background: var(--gray);
 }

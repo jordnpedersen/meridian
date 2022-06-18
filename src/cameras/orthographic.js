@@ -9,8 +9,8 @@ const LEFT = frustum * aspect / - 2;
 const RIGHT = frustum * aspect / 2;
 const TOP = frustum / 2;
 const BOTTOM = frustum / - 2;
-const NEAR = - 250;
-const FAR = 250;
+const NEAR = - 500;
+const FAR = 500;
 const POS = [0, 3, 9];
 
 /**

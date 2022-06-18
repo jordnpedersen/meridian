@@ -91,7 +91,6 @@ document.addEventListener('keydown', event => {
         camera.position.copy(position);
         camera.lookAt(0, 0, 0);
         controls.camera = camera;
-        camera.updateProjectionMatrix();
         break;
       case 'f':
         ORBIT.controls.target = controls.object.position;
