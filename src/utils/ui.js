@@ -102,7 +102,7 @@ function updateUI() {
 /**
  * Updates the object's material color upon input
  */
-ui.color.addEventListener('input', event => {
+UI.color.addEventListener('input', event => {
   if (TRANSFORM.controls.object !== undefined) {
     if (TRANSFORM.controls.object.isMesh) {
       updateObjectMaterialColor(TRANSFORM.controls.object);
