@@ -13,107 +13,163 @@
   <link rel="stylesheet" href="src/main.css">
 </head>
 <body>
-  <section id="add">
-    <h1>add</h1>
-    <hr>
-    <h2>object</h2>
-    <ul id="addObjects">
-      <li><button id="addCapsule">capsule</button></li>
-      <li><button id="addCone">cone</button></li>
-      <li><button id="addCube">cube</button></li>
-      <li><button id="addCylinder">cylinder</button></li>
-      <li><button id="addKnot">knot</button></li>
-      <li><button id="addSphere">sphere</button></li>
-      <li><button id="addTorus">torus</button></li>
-    </ul>
-    <hr>
-    <h2>light</h2>
-    <ul id="addLights">
-      <li><button id="addPoint">point</button></li>
-      <li><button id="addSpot">spot</button></li>
-    </ul>
+  <div id="menu">
+    <section id="file">
+      <h1>file</h1>
+      <div id="fileContent" class="hidden">
+        <hr>
+        <ul>
+          <li><button id="new">new</button></li>
+          <li><button id="export">export</button></li>
+          <li><button id="render">render</button></li>
+        </ul>
+      </div>
+    </section>
+    <section id="edit">
+      <h1>edit</h1>
+      <div id="editContent" class="hidden">
+        <hr>
+        <ul>
+          <li><button id="undo">undo</button></li>
+          <li><button id="redo">redo</button></li>
+          <li><button id="copy">copy</button></li>
+          <li><button id="paste">paste</button></li>
+          <li><button id="delete">delete</button></li>
+        </ul>
+      </div>
+    </section>
+    <section id="add">
+      <h1>add</h1>
+      <div id="addContent" class="hidden">
+        <hr>
+        <h2>object</h2>
+        <ul id="addObject">
+          <li><button id="addCapsule">capsule</button></li>
+          <li><button id="addCone">cone</button></li>
+          <li><button id="addCube">cube</button></li>
+          <li><button id="addCylinder">cylinder</button></li>
+          <li><button id="addKnot">knot</button></li>
+          <li><button id="addSphere">sphere</button></li>
+          <li><button id="addTorus">torus</button></li>
+        </ul>
+        <hr>
+        <h2>light</h2>
+        <ul id="addLight">
+          <li><button id="addPoint">point</button></li>
+          <li><button id="addSpot">spot</button></li>
+        </ul>
+      </div>
+    </section>
+    <section id="help">
+      <h1>help</h1>
+      <div id="helpContent" class="hidden">
+        <hr>
+        <ul>
+          <li><a id="github" href="https://github.com/jordnpedersen/meridian" target="_blank">github</a></li>
+          <li><button id="hotkeysButton">hotkeys</button></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <section id="settings">
+    <h1><button id="settingsButton">settings</button></h1>
+    <div id="settingsContent">
+      <hr>
+      <h2>scene</h2>
+      <ul id="sceneObjects">
+        <li><button id="scene">scene</button></li>
+        <li><button id="camera">camera</button></li>
+      </ul>
+      <hr>
+      <h2>position</h2>
+      <ul class="xyz">
+        <li><label>x: </label><input id="positionX" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>y: </label><input id="positionY" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>z: </label><input id="positionZ" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+      </ul>
+      <hr>
+      <h2>rotation</h2>
+      <ul class="xyz">
+        <li><label>x: </label><input id="rotationX" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>y: </label><input id="rotationY" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>z: </label><input id="rotationZ" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+      </ul>
+      <hr>
+      <h2>scale</h2>
+      <ul class="xyz">
+        <li><label>x: </label><input id="scaleX" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>y: </label><input id="scaleY" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>z: </label><input id="scaleZ" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+      </ul>
+      <hr>
+      <h2>material</h2>
+      <ul>
+        <li><button id="basic">basic</button></li>
+        <li><button id="lambert">lambert</button></li>
+        <li><button id="normal">normal</button></li>
+        <li><button id="phong">phong</button></li>
+        <li><button id="standard">standard</button></li>
+      </ul>
+      <hr>
+      <h2>properties</h2>
+      <ul>
+        <li><label>angle: </label><input id="angle" type="number" value="0.3" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>background: </label><input id="background" type="color" value="#080808"></li>
+        <li><label>color: </label><input id="color" type="color" value="#181818"></li>
+        <li><label>fog: </label><input id="fogCheckbox" type="checkbox"> <input id="fogColor" type="color" value="#080808"></li>
+        <li><label>fov: </label><input id="fov" type="number" value="50" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>intensity: </label><input id="intensity" type="number" value="1" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>metalness: </label><input id="metalness" type="number" value="0" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>opacity: </label><input id="opacity" type="number" value="1" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>penumbra: </label><input id="penumbra" type="number" value="1" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>roughness: </label><input id="roughness" type="number" value="0.7" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>shininess: </label><input id="shininess" type="number" value="30" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+        <li><label>transparent: </label><input id="transparent" type="checkbox"></li>
+        <li><label>zoom: </label><input id="zoom" type="number" value="1" onfocus="this.select()" oninput="this.value=this.value.slice(0, 3)"></li>
+      </ul>
+    </div>
   </section>
-  <section id="edit">
-    <h1>edit</h1>
-    <hr>
-    <h2>scene</h2>
-    <ul id="sceneObjects">
-      <li><button id="camera">camera</button></li>
-    </ul>
-    <hr>
-    <h2>position</h2>
-    <ul class="xyz">
-      <li>
-        <label>x: </label><input id="position-x" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>y: </label><input id="position-y" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>z: </label><input id="position-z" type="number" value="0" onfocus="this.select()">
-      </li>
-    </ul>
-    <hr>
-    <h2>rotation</h2>
-    <ul class="xyz">
-      <li>
-        <label>x: </label><input id="rotation-x" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>y: </label><input id="rotation-y" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>z: </label><input id="rotation-z" type="number" value="0" onfocus="this.select()">
-      </li>
-    </ul>
-    <hr>
-    <h2>scale</h2>
-    <ul class="xyz">
-      <li>
-        <label>x: </label><input id="scale-x" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>y: </label><input id="scale-y" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>z: </label><input id="scale-z" type="number" value="0" onfocus="this.select()">
-      </li>
-    </ul>
-    <hr>
-    <h2>material</h2>
-    <ul>
-      <li><button id="basic">basic</button></li>
-      <li><button id="lambert">lambert</button></li>
-      <li><button id="normal">normal</button></li>
-      <li><button id="phong">phong</button></li>
-      <li><button id="standard">standard</button></li>
-    </ul>
-    <hr>
-    <h2>properties</h2>
-    <ul>
-      <li>
-        <label>color: </label><input id="color" type="color" value="#181818">
-      </li>
-      <li>
-        <label>metalness: </label><input id="metalness" type="number" value="0" onfocus="this.select()">
-      </li>
-      <li>
-        <label>opacity: </label><input id="opacity" type="number" value="1" onfocus="this.select()">
-      </li>
-      <li>
-        <label>roughness: </label><input id="roughness" type="number" value="0.7" onfocus="this.select()">
-      </li>
-      <li>
-        <label>transparent: </label><input id="transparent" type="checkbox" onfocus="this.select()">
-      </li>
-    </ul>
-  </section>
+  <section id="viewHelper"></section>
+  <div id="container">
+    <section id="hotkeys">
+      <h2>hotkeys</h2>
+      <hr>
+      <ul>
+        <ul>
+          <li>q: local/world</li>
+          <li>w: position</li>
+          <li>e: rotation</li>
+          <li>r: scale</li>
+        </ul>
+        <ul>
+          <li>a: controls size</li>
+          <li>s: controls size</li>
+          <li>d: persp/ortho</li>
+          <li>f: focus</li>
+        </ul>
+        <ul>
+          <li>z: toggle z</li>
+          <li>x: toggle x</li>
+          <li>c: toggle y</li>
+          <li>v: toggle controls</li>
+        </ul>
+        <ul>
+          <li>-: decrement fov/zoom</li>
+          <li>+: increment fov/zoom</li>
+          <li>shift: hold snap</li>
+          <li>escape: deselect</li>
+          <li>delete: delete</li>
+        </ul>
+      </ul>
+    </section>
+  </div>
   <script type="importmap">
     {
       "imports": {
         "three": "/node_modules/three/build/three.module.js",
         "OrbitControls": "/node_modules/three/examples/jsm/controls/OrbitControls.js",
-        "TransformControls": "/node_modules/three/examples/jsm/controls/TransformControls.js"
+        "TransformControls": "/node_modules/three/examples/jsm/controls/TransformControls.js",
+        "ViewHelper": "/node_modules/three/examples/jsm/helpers/ViewHelper.js"
       }
     }
   </script>
