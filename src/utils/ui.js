@@ -1,7 +1,7 @@
 'use strict';
 
 import * as TRANSFORM from '/src/controls/transform.js';
-import {ui} from '/src/configs/ui.js';
+import UI from '/src/configs/ui.js';
 import {scene} from '/src/main.js';
 
 /**
@@ -11,9 +11,9 @@ import {scene} from '/src/main.js';
  * @param {z} z z position
  */
 function updateUIposition(x, y, z) {
-  ui.position.x.value = x;
-  ui.position.y.value = y;
-  ui.position.z.value = z;
+  UI.position.x.value = x;
+  UI.position.y.value = y;
+  UI.position.z.value = z;
 }
 
 /**
@@ -23,9 +23,9 @@ function updateUIposition(x, y, z) {
  * @param {float} z z rotation
  */
 function updateUIrotation(x, y, z) {
-  ui.rotation.x.value = x;
-  ui.rotation.y.value = y;
-  ui.rotation.z.value = z;
+  UI.rotation.x.value = x;
+  UI.rotation.y.value = y;
+  UI.rotation.z.value = z;
 }
 
 /**
@@ -35,9 +35,9 @@ function updateUIrotation(x, y, z) {
  * @param {float} z z scale
  */
 function updateUIscale(x, y, z) {
-  ui.scale.x.value = x;
-  ui.scale.y.value = y;
-  ui.scale.z.value = z;
+  UI.scale.x.value = x;
+  UI.scale.y.value = y;
+  UI.scale.z.value = z;
 }
 
 /**
@@ -45,7 +45,7 @@ function updateUIscale(x, y, z) {
  * @param {THREE.Object3D} object object to update material color of
  */
 function updateObjectMaterialColor(object) {
-  const color = ui.color.value.replace('#', '0x');
+  const color = UI.color.value.replace('#', '0x');
 
   object.material.color.setHex(color);
 }
@@ -55,7 +55,7 @@ function updateObjectMaterialColor(object) {
  * @param {THREE.Object3D} light light to update material color of
  */
 function updateLightMaterialColor(light) {
-  const color = ui.color.value.replace('#', '0x');
+  const color = UI.color.value.replace('#', '0x');
 
   light.color.setHex(color);
 }
@@ -66,12 +66,12 @@ function updateLightMaterialColor(light) {
  */
 function updateMaterialProperties(object) {
   if (object.isMesh) {
-    ui.color.value = '#' + object.material.color.getHexString();
-    ui.metalness.value = object.material.metalness;
-    ui.opacity.value = object.material.opacity;
-    ui.roughness.value = object.material.roughness;
+    UI.color.value = '#' + object.material.color.getHexString();
+    UI.metalness.value = object.material.metalness;
+    UI.opacity.value = object.material.opacity;
+    UI.roughness.value = object.material.roughness;
   } else if (object.isLight) {
-    ui.color.value = '#' + object.color.getHexString();
+    UI.color.value = '#' + object.color.getHexString();
   }
 }
 

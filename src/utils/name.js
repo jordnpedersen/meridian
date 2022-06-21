@@ -26,7 +26,6 @@ function getName(objectName) {
         const childNameSplit = childName.split(objectName);
 
         if (childNameSplit.length === 2 && !isNaN(childNameSplit[1])) {
-          // childName is in correct format of <objectName>+<number>
           const num = Number(childNameSplit[1]);
 
           if (num > highest) {

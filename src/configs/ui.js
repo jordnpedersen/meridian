@@ -1,32 +1,83 @@
 'use strict';
 
-const ui = {
-  'add': document.getElementById('add'),
+const UI = {
+  'file': document.getElementById('file'),
+  'fileButton': document.getElementById('fileButton'),
+  'fileContent': document.getElementById('fileContent'),
+  'new': document.getElementById('new'),
+  'export': document.getElementById('export'),
+  'render': document.getElementById('render'),
   'edit': document.getElementById('edit'),
-  'sceneObjects': document.getElementById('sceneObjects'),
+  'editButton': document.getElementById('editButton'),
+  'editContent': document.getElementById('editContent'),
+  'undo': document.getElementById('undo'),
+  'redo': document.getElementById('redo'),
+  'copy': document.getElementById('copy'),
+  'paste': document.getElementById('paste'),
+  'delete': document.getElementById('delete'),
+  'add': document.getElementById('add'),
+  'addButton': document.getElementById('addButton'),
+  'addContent': document.getElementById('addContent'),
+  'addObject': document.getElementById('addObject'),
+  'capsule': document.getElementById('capsule'),
+  'cone': document.getElementById('cone'),
+  'cube': document.getElementById('cube'),
+  'cylinder': document.getElementById('cylinder'),
+  'knot': document.getElementById('knot'),
+  'sphere': document.getElementById('sphere'),
+  'torus': document.getElementById('torus'),
+  'addLight': document.getElementById('addLight'),
+  'point': document.getElementById('point'),
+  'spot': document.getElementById('spot'),
+  'help': document.getElementById('help'),
+  'helpButton': document.getElementById('helpButton'),
+  'helpContent': document.getElementById('helpContent'),
+  'github': document.getElementById('github'),
+  'hotkeysButton': document.getElementById('hotkeysButton'),
+  'settings': document.getElementById('settings'),
+  'settingsButton': document.getElementById('settingsButton'),
+  'settingsContent': document.getElementById('settingsContent'),
+  'settingsObjects': document.getElementById('settingsContent'),
+  'scene': document.getElementById('scene'),
+  'camera': document.getElementById('camera'),
   'position': {
-    'x': document.getElementById('position-x'),
-    'y': document.getElementById('position-y'),
-    'z': document.getElementById('position-z')
+    'x': document.getElementById('positionX'),
+    'y': document.getElementById('positionY'),
+    'z': document.getElementById('positionZ')
   },
   'rotation': {
-    'x': document.getElementById('rotation-x'),
-    'y': document.getElementById('rotation-y'),
-    'z': document.getElementById('rotation-z')
+    'x': document.getElementById('rotationX'),
+    'y': document.getElementById('rotationY'),
+    'z': document.getElementById('rotationZ')
   },
   'scale': {
-    'x': document.getElementById('scale-x'),
-    'y': document.getElementById('scale-y'),
-    'z': document.getElementById('scale-z')
+    'x': document.getElementById('scaleX'),
+    'y': document.getElementById('scaleY'),
+    'z': document.getElementById('scaleZ')
   },
+  'material': document.getElementById('material'),
+  'basic': document.getElementById('basic'),
+  'lambert': document.getElementById('lambert'),
+  'normal': document.getElementById('normal'),
+  'phong': document.getElementById('phong'),
+  'standard': document.getElementById('standard'),
+  'properties': document.getElementById('properties'),
+  'angle': document.getElementById('angle'),
+  'background': document.getElementById('background'),
   'color': document.getElementById('color'),
+  'fog': document.getElementById('fog'),
+  'fov': document.getElementById('fov'),
+  'intensity': document.getElementById('intensity'),
   'metalness': document.getElementById('metalness'),
   'opacity': document.getElementById('opacity'),
+  'penumbra': document.getElementById('penumbra'),
   'roughness': document.getElementById('roughness'),
-  'addSection': {
-    'objects': document.getElementById('addObjects'),
-    'lights': document.getElementById('addLights')
-  }
-}
+  'shininess': document.getElementById('shininess'),
+  'transparent': document.getElementById('transparent'),
+  'zoom': document.getElementById('zoom'),
+  'viewHelper': document.getElementById('viewHelper'),
+  'container': document.getElementById('container'),
+  'hotkeys': document.getElementById('hotkeys')
+};
 
-export {ui};
+export default UI;

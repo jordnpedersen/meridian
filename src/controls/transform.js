@@ -121,8 +121,8 @@ document.addEventListener('keydown', event => {
         }
         camera.updateProjectionMatrix();
         break;
-      case '=':
       case '+':
+      case '=':
         if (camera === perspective) {
           if (camera.fov < 20) {
             camera.fov = 20;

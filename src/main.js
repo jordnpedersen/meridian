@@ -9,12 +9,14 @@ import * as OBJECT from '/src/utils/object.js';
 import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
 import * as SPOT from '/src/lights/spot.js';
+import * as ViewHelper from 'ViewHelper';
 import * as UI from '/src/utils/ui.js';
 import {raycast} from '/src/raycast.js';
 import {setOutline} from '/src/utils/outline.js';
+import dropdown from '/src/events/dropdown.js';
 import '/src/events/add.js';
 
-let scene, perspective, orthographic, camera, renderer;
+let scene, perspective, orthographic, camera, renderer, helper;
 
 init();
 animate();
@@ -22,7 +24,7 @@ animate();
 function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x080808);
-  scene.fog = new THREE.FogExp2(0x080808, 0.01);
+  scene.fog = new THREE.FogExp2(0x080808, 0.02);
 
   perspective = PERSPECTIVE.createCamera();
   orthographic = ORTHOGRAPHIC.createCamera();
@@ -36,6 +38,8 @@ function init() {
   ORBIT.createController();
 
   TRANSFORM.createController();
+
+  helper = new ViewHelper.ViewHelper(camera, document.getElementById('helper'));
 
   const grid = new THREE.GridHelper(1000, 1000, 0x282828, 0x181818);
   scene.add(grid);
@@ -65,11 +69,14 @@ function updateCamera() {
   camera = camera.isPerspectiveCamera ? orthographic : perspective;
 }
 
+dropdown();
+
 /**
  * Renders the scene
  * Seperated from 'animate()' function for performance reasons as this function needs to be called elsewhere
  */
 function render() {
+  // helper.render(renderer);
   renderer.render(scene, camera);
 }
 
@@ -82,9 +89,15 @@ function animate() {
   raycast();
   setOutline();
   UI.updateUI();
+
+  /* if (helper.animating === true) {
+    helper.update();
+    needsUpdate = true;
+  } */
+
   render();
 }
 
 document.oncontextmenu = () => false;
 
-export {scene, camera, perspective, renderer, render, updateCamera};
+export {scene, camera, perspective, renderer, helper, render, updateCamera};

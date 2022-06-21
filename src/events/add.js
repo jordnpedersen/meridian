@@ -3,10 +3,10 @@
 import * as OBJECT from '/src/utils/object.js';
 import * as POINT from '/src/lights/point.js';
 import * as SPOT from '/src/lights/spot.js';
-import {ui} from '/src/configs/ui.js'
+import UI from '/src/configs/ui.js'
 
-const obj_li = ui.addSection.objects.getElementsByTagName('li');
-const light_li = ui.addSection.lights.getElementsByTagName('li');
+const obj_li = UI.addObject.getElementsByTagName('li');
+const light_li = UI.addLight.getElementsByTagName('li');
 
 // Add event listeners for 'add object' for all objects
 for (let child of obj_li) {
