@@ -1,8 +1,16 @@
 'use strict';
 
+import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
+import * as BASIC from '/src/materials/basic.js';
+import * as LAMBERT from '/src/materials/lambert.js';
+import * as NORMAL from '/src/materials/normal.js';
+import * as PHONG from '/src/materials/phong.js';
+import * as STANDARD from '/src/materials/standard.js';
 import UI from '/src/configs/ui.js';
-import {scene} from '/src/main.js';
+import {scene, camera} from '/src/main.js';
+
+let mouseOverSettings = false;
 
 /**
  * Updates UI position
@@ -89,28 +97,17 @@ function resetUI() {
  * Should probably seperate functionality with updating material color
  */
 function updateUI() {
-  if (TRANSFORM.controls.object === undefined) {
-    resetUI();
-  } else {
-    updateUIposition(TRANSFORM.controls.object.position.x, TRANSFORM.controls.object.position.y, TRANSFORM.controls.object.position.z);
-    updateUIrotation(TRANSFORM.controls.object.rotation.x, TRANSFORM.controls.object.rotation.y, TRANSFORM.controls.object.rotation.z);
-    updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
-    updateMaterialProperties(TRANSFORM.controls.object);
-  }
-}
-
-/**
- * Updates the object's material color upon input
- */
-UI.color.addEventListener('input', event => {
-  if (TRANSFORM.controls.object !== undefined) {
-    if (TRANSFORM.controls.object.isMesh) {
-      updateObjectMaterialColor(TRANSFORM.controls.object);
-    } else if (TRANSFORM.controls.object.isLight) {
-      updateLightMaterialColor(TRANSFORM.controls.object);
+  if (TRANSFORM.controls.dragging || (!TRANSFORM.controls.dragging && !mouseOverSettings)) {
+    if (TRANSFORM.controls.object === undefined) {
+      resetUI();
+    } else {
+      updateUIposition(TRANSFORM.controls.object.position.x, TRANSFORM.controls.object.position.y, TRANSFORM.controls.object.position.z);
+      updateUIrotation(TRANSFORM.controls.object.rotation.x, TRANSFORM.controls.object.rotation.y, TRANSFORM.controls.object.rotation.z);
+      updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
+      updateMaterialProperties(TRANSFORM.controls.object);
     }
   }
-});
+}
 
 /**
  * Attaches transform controls to selected UI object from scene
@@ -122,5 +119,15 @@ document.getElementById('sceneObjects').addEventListener('click', event => {
     TRANSFORM.outlineAttach(object);
   }
 });
+
+// Temporary events until I figure out a better way to do this
+
+document.getElementById('settings').addEventListener('mouseover', event => {
+  mouseOverSettings = true;
+})
+
+document.getElementById('settings').addEventListener('mouseleave', event => {
+  mouseOverSettings = false;
+})
 
 export {updateUI};
