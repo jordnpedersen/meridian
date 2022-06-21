@@ -44,10 +44,10 @@ function init() {
 
   AMBIENT.addLight();
 
-  POINT.addLight([1, 3, -3], 0x408040);
-  POINT.addLight([3, 3, 3], 0x804040);
+  POINT.addLight(false, [1, 3, -3], 0x408040);
+  POINT.addLight(false, [3, 3, 3], 0x804040);
 
-  SPOT.addLight([-3, 2, -3], 0x804080);
+  SPOT.addLight(false, [-3, 2, -3], 0x804080);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
