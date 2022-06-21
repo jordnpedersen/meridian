@@ -16,7 +16,7 @@ let controls;
 function createController() {
   controls = new TransformControls(camera, renderer.domElement);
   controls.setSize(0.9);
-  controls.addEventListener('change', render);
+  // controls.addEventListener('change', render);
   controls.addEventListener('dragging-changed', event => {
     ORBIT.controls.enabled = !event.value;
   });
@@ -94,7 +94,7 @@ document.addEventListener('keydown', event => {
         break;
       case 'f':
         camera.lookAt(controls.object.position);
-        ORBIT.controls.reset();
+        ORBIT.controls.target.set(controls.object.position.x, controls.object.position.y, controls.object.position.z);
         break;
       case 'z':
         controls.showZ = !controls.showZ;
