@@ -11,7 +11,7 @@ const COLOR = 0xf8f8f8;
 const INTENSITY = 1;
 const DISTANCE = 500;
 const ANGLE = 0.3;
-const PENUMBRA = 0.5;
+const PENUMBRA = 1;
 const DECAY = 2;
 
 /**
@@ -33,6 +33,7 @@ function addLight(position = POSITION, color = COLOR, intensity = INTENSITY, dis
   ID.assignID(light);
 
   const helper = new THREE.SpotLightHelper(light);
+  helper.cone.geometry.setDrawRange(2, 72);
   helper.cone.scale.multiplyScalar(1 / DISTANCE);
   helper.isHelper = true;
   scene.add(helper);

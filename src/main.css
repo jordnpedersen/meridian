@@ -12,44 +12,90 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   background: #080808;
-  color: #f8f8f8;
+  color: #808080;
+  display: grid;
+  gap: var(--gap);
+}
+#menu {
+  position: fixed;
+  display: grid;
+  gap: var(--gap);
+  align-items: start;
+  grid-template-columns: 10rem 10rem 10rem 10rem;
 }
 section {
   margin: var(--gap);
   border: 0.1rem solid var(--gray);
   border-radius: var(--gap);
   padding: var(--gap);
-  position: fixed;
-  max-height: 100%;
+  min-width: 10rem;
+  max-height: calc(100vh - var(--gap) * 2);
   display: grid;
   gap: calc(var(--gap) / 2);
-  backdrop-filter: blur(var(--gap));
-  overflow: scroll;
+  backdrop-filter: blur(2rem);
+  overflow: auto;
+}
+/* #file div,
+#edit div,
+#add div,
+#help div,
+#settings div {
+  display: grid;
+  gap: calc(var(--gap) / 2);
+} */
+#file,
+#edit,
+#help {
+  display: none;
 }
 h1,
 h2 {
   font-weight: bold;
   text-align: center;
-}
-ul {
-  display: grid;
-  gap: calc(var(--gap) / 2);
+  color: #f8f8f8;
 }
 button {
+  color: inherit;
   background: transparent;
 }
-#edit {
-  right: 0;
+div {
+  display: grid;
+  gap: calc(var(--gap) / 2);
 }
 hr {
   height: 0.1rem;
   background: var(--gray);
 }
+ul {
+  max-height: 25.1rem;
+  display: grid;
+  gap: calc(var(--gap) / 2);
+  overflow: auto;
+}
+ul::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  display: block;
+}
+ul::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background: var(--gray);
+}
+ul::-webkit-scrollbar-thumb:hover {
+  background: #282828;
+}
+#settings {
+  width: 21.5rem;
+  position: fixed;
+  justify-self: end;
+}
+#settingsContent {
+  display: grid;
+}
 .xyz {
   grid-template-columns: auto auto auto;
 }
 input {
-  max-width: calc(var(--gap) * 2);
   outline: none;
   background: transparent;
 }
@@ -58,12 +104,14 @@ input::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 input[type=number] {
+  max-width: 3rem;
   -moz-appearance: textfield;
 }
 input[type=color] {
   border: 0.1rem solid var(--gray);
   border-radius: 0.6rem;
-  max-height: 1.9rem;
+  width: 3.8rem;
+  height: 1.9rem;
   vertical-align: middle;
   appearance: none;
   -moz-appearance: none;
@@ -94,4 +142,35 @@ input[type=checkbox] {
 }
 input[type=checkbox]:checked {
   background: var(--gray);
+}
+#viewHelper {
+  height: 10rem;
+  position: fixed;
+  align-self: end;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  place-items: center;
+}
+#hotkeys {
+  /* min-width: calc(37.5rem - var(--gap) * 2); */
+  display: grid;
+}
+#hotkeys>ul {
+  max-height: 100rem;
+  align-items: start;
+  grid-template-columns: auto auto auto auto;
+}
+.hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  #file,
+  #edit,
+  #help {
+    display: block;
+  }
 }
