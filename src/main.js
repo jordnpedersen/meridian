@@ -15,6 +15,7 @@ import {raycast} from '/src/raycast.js';
 import {setOutline} from '/src/utils/outline.js';
 import dropdown from '/src/events/dropdown.js';
 import '/src/events/add.js';
+import '/src/events/settings.js';
 
 let scene, perspective, orthographic, camera, renderer, helper;
 
@@ -87,8 +88,6 @@ function render() {
 function animate() {
   requestAnimationFrame(animate);
   raycast();
-  setOutline();
-  UI.updateUI();
 
   /* if (helper.animating === true) {
     helper.update();
@@ -97,6 +96,15 @@ function animate() {
 
   render();
 }
+
+// TODO: Move this later
+function transformRender() {
+  setOutline();
+  UI.updateUI();
+  render();
+}
+
+TRANSFORM.controls.addEventListener('change', transformRender);
 
 document.oncontextmenu = () => false;
 

@@ -45,9 +45,16 @@ function setOutline() {
   try { // TODO: Maybe use `if (outlineExists())` instead of try/catch
     const object = scene.getObjectByName('outline');
 
-    object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.005);
-    object.scale.y = Math.abs(object.pseudoParent.scale.y) + (camera.position.distanceTo(object.position) * 0.005);
-    object.scale.z = Math.abs(object.pseudoParent.scale.z) + (camera.position.distanceTo(object.position) * 0.005);
+    // TODO: Temporary fix, make something more elegant later
+    if (!object.geometry.type === 'TorusKnotGeometry') {
+      object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.005);
+      object.scale.y = Math.abs(object.pseudoParent.scale.y) + (camera.position.distanceTo(object.position) * 0.005);
+      object.scale.z = Math.abs(object.pseudoParent.scale.z) + (camera.position.distanceTo(object.position) * 0.005);
+    } else {
+      object.scale.x = object.pseudoParent.scale.x + (camera.position.distanceTo(object.position) * 0.005);
+      object.scale.y = object.pseudoParent.scale.y + (camera.position.distanceTo(object.position) * 0.005);
+      object.scale.z = object.pseudoParent.scale.z + (camera.position.distanceTo(object.position) * 0.005);
+    }
 
     object.position.x = object.pseudoParent.position.x;
     object.position.y = object.pseudoParent.position.y;

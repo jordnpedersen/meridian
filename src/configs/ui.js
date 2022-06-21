@@ -65,7 +65,10 @@ const UI = {
   'angle': document.getElementById('angle'),
   'background': document.getElementById('background'),
   'color': document.getElementById('color'),
-  'fog': document.getElementById('fog'),
+  'fog': {
+    'checkbox': document.getElementById('fogCheckbox'),
+    'color': document.getElementById('fogColor')
+  },
   'fov': document.getElementById('fov'),
   'intensity': document.getElementById('intensity'),
   'metalness': document.getElementById('metalness'),
