@@ -95,14 +95,22 @@ function updateUI() {
     updateUIposition(TRANSFORM.controls.object.position.x, TRANSFORM.controls.object.position.y, TRANSFORM.controls.object.position.z);
     updateUIrotation(TRANSFORM.controls.object.rotation.x, TRANSFORM.controls.object.rotation.y, TRANSFORM.controls.object.rotation.z);
     updateUIscale(TRANSFORM.controls.object.scale.x, TRANSFORM.controls.object.scale.y, TRANSFORM.controls.object.scale.z);
+    updateMaterialProperties(TRANSFORM.controls.object);
+  }
+}
+
+/**
+ * Updates the object's material color upon input
+ */
+ui.color.addEventListener('input', event => {
+  if (TRANSFORM.controls.object !== undefined) {
     if (TRANSFORM.controls.object.isMesh) {
       updateObjectMaterialColor(TRANSFORM.controls.object);
     } else if (TRANSFORM.controls.object.isLight) {
       updateLightMaterialColor(TRANSFORM.controls.object);
     }
-    updateMaterialProperties(TRANSFORM.controls.object);
   }
-}
+});
 
 /**
  * Attaches transform controls to selected UI object from scene

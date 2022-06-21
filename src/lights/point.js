@@ -1,6 +1,7 @@
 'use strict';
 
 import * as THREE from 'three';
+import * as TRANSFORM from '/src/controls/transform.js';
 import * as NAME from '/src/utils/name.js';
 import * as ID from '/src/utils/uuid.js';
 import {scene} from '/src/main.js';
@@ -22,13 +23,17 @@ const SIZE = 0.3;
  * @param {float} decay - The amount the light dims along the distance of the light.
  * @param {float} size - The size of the helper.
  */
-function addLight(position = POSITION, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, size = SIZE) {
+function addLight(attach = true, position = POSITION, color = COLOR, intensity = INTENSITY, distance = DISTANCE, decay = DECAY, size = SIZE) {
   const light = new THREE.PointLight(color, intensity, distance, decay);
   light.position.set(position[0], position[1], position[2]);
   light.name = NAME.getName('point');
   scene.add(light);
 
   ID.assignID(light);
+
+  if (attach) {
+    TRANSFORM.outlineAttach(light);
+  }
 
   const helper = new THREE.PointLightHelper(light, size);
   helper.isHelper = true;

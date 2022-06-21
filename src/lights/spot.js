@@ -1,6 +1,7 @@
 'use strict';
 
 import * as THREE from 'three';
+import * as TRANSFORM from '/src/controls/transform.js';
 import * as NAME from '/src/utils/name.js';
 import * as ID from '/src/utils/uuid.js';
 import {scene} from '/src/main.js';
@@ -24,13 +25,17 @@ const DECAY = 2;
  * @param {float} penumbra - Percent of the spotlight cone that is attenuated due to penumbra.
  * @param {float} decay - The amount the light dims along the distance of the light.
  */
-function addLight(position = POSITION, color = COLOR, intensity = INTENSITY, distance = DISTANCE, angle = ANGLE, penumbra = PENUMBRA, decay = DECAY) {
+function addLight(attach = true, position = POSITION, color = COLOR, intensity = INTENSITY, distance = DISTANCE, angle = ANGLE, penumbra = PENUMBRA, decay = DECAY) {
   const light = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
   light.position.set(position[0], position[1], position[2]);
   light.name = NAME.getName('spot');
   scene.add(light);
 
   ID.assignID(light);
+
+  if (attach) {
+    TRANSFORM.outlineAttach(light);
+  }
 
   const helper = new THREE.SpotLightHelper(light);
   helper.cone.geometry.setDrawRange(2, 72);

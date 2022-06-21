@@ -93,8 +93,8 @@ document.addEventListener('keydown', event => {
         controls.camera = camera;
         break;
       case 'f':
-        ORBIT.controls.target = controls.object.position;
         camera.lookAt(controls.object.position);
+        ORBIT.controls.reset();
         break;
       case 'z':
         controls.showZ = !controls.showZ;
