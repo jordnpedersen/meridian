@@ -51,7 +51,7 @@ window.addEventListener('mousedown', event => {
   for (let i = 0; i < intersects.length; i++) {
     let selectedObject = intersects[i].object;
 
-    if (selectedObject.isMesh && (pointer.x !== 0 && pointer.y !== 0)) {
+    if ((selectedObject.isMesh || selectedObject.isLine) && (pointer.x !== 0 && pointer.y !== 0)) {
       if (TRANSFORM.controls.dragging) {
         return;
       }
