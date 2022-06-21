@@ -58,6 +58,8 @@ window.addEventListener('mousedown', event => {
       if (selectedObject.static !== true) {
         if (selectedObject.isHelper) {
           TRANSFORM.outlineAttach(selectedObject.light);
+        } else if (selectedObject.isLine) {
+          TRANSFORM.outlineAttach(selectedObject.parent.light);
         } else {
           TRANSFORM.outlineAttach(selectedObject);
         }
