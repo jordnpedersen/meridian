@@ -17,17 +17,17 @@ for (let child of obj_li) {
   });
 }
 
-// Add event listeners for 'add object' for all objects
+// Add event listeners for 'add light' for all lights
 for (let child of light_li) {
   let childID = document.getElementById(child.children.item(0).id);
 
   childID.addEventListener('click', () => {
     switch (child.children.item(0).outerText) {
       case 'point':
-        POINT.addLight();
+        POINT.addLight(true, [0, 3, 0], ui.color.value);
         break;
       case 'spot':
-        SPOT.addLight();
+        SPOT.addLight(true, [0, 3, 0], ui.color.value);
         break;
     }
   });
