@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
-import {scene, camera, perspective, renderer, render, updateCamera} from '/src/main.js';
+import {scene, camera, renderer} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
 import {deleteObject} from '/src/utils/object.js';
@@ -61,4 +61,17 @@ function outlineDetach(object) {
   controls.detach(object);
 }
 
-export {controls, createController, outlineAttach, outlineDetach};
+function deleteAttachedObject() {
+  if (controls.object.isMesh) {
+    deleteOutline();
+  }
+  if (controls.object.isLight) {
+    const lightHelper = scene.getObjectByName(controls.object.uuid);
+    raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === lightHelper.uuid), 1);
+  } else {
+    raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid), 1);
+  }
+  deleteObject(controls.object);
+}
+
+export {controls, createController, outlineAttach, outlineDetach, deleteAttachedObject};
