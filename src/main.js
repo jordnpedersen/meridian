@@ -10,9 +10,7 @@ import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
 import * as SPOT from '/src/lights/spot.js';
 import * as ViewHelper from 'ViewHelper';
-import * as UI from '/src/utils/ui.js';
 import {raycast} from '/src/events/raycast.js';
-import {setOutline} from '/src/utils/outline.js';
 import dropdown from '/src/events/dropdown.js';
 import '/src/events/add.js';
 import '/src/events/settings.js';
@@ -97,15 +95,6 @@ function animate() {
 
   render();
 }
-
-// // TODO: Move this later
-// function transformRender() {
-//   setOutline();
-//   UI.updateUI();
-//   render();
-// }
-
-// TRANSFORM.controls.addEventListener('change', transformRender);
 
 document.oncontextmenu = () => false;
 

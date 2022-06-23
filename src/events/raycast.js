@@ -2,7 +2,7 @@
 
 import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
-import {scene, camera} from '/src/main.js';
+import {camera} from '/src/main.js';
 import {clickedUI} from '/src/utils/ui.js';
 import {raycasterObjects} from '/src/utils/object.js';
 
