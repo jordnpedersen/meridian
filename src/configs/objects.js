@@ -2,7 +2,7 @@
 
 import * as THREE from 'three';
 
-const objects = {
+const OBJECTS = {
   'capsule': {
     'geometry': new THREE.CapsuleGeometry(0.5, 1, 8, 16)
   },
@@ -26,4 +26,4 @@ const objects = {
   }
 }
 
-export {objects};
+export {OBJECTS};
