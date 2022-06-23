@@ -1,5 +1,7 @@
 'use strict';
 
+import UI from '/src/configs/ui.js';
+
 /**
  * Replaces an object's ID in the HTML (currently unused)
  * @param {THREE.Object3D} object object to replace ID of in HTML
@@ -14,12 +16,12 @@ function replaceID(object, objectId) {
  * @param {THREE.Object3D} object object to embed ID into HTML
  */
 function assignID(object) {
-  const ul = document.getElementById('sceneObjects');
   const li = document.createElement('li');
   const button = document.createElement('button');
+
   button.innerHTML = object.name;
   button.setAttribute('id', object.id);
-  ul.appendChild(li);
+  UI.sceneObjects.appendChild(li);
   li.appendChild(button);
 }
 
