@@ -3,10 +3,11 @@
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
 import {TransformControls} from 'TransformControls';
-import {scene, camera, renderer} from '/src/main.js';
+import {scene, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
-import {createOutline, deleteOutline, outlineExists} from '/src/utils/outline.js';
+import {createOutline, deleteOutline, outlineExists, setOutline} from '/src/utils/outline.js';
 import {deleteObject} from '/src/utils/object.js';
+import {updateUI} from '/src/utils/ui.js';
 
 let controls;
 
@@ -16,7 +17,7 @@ let controls;
 function createController() {
   controls = new TransformControls(camera, renderer.domElement);
   controls.setSize(0.9);
-  // controls.addEventListener('change', render);
+  controls.addEventListener('change', transformRender);
   controls.addEventListener('dragging-changed', event => {
     ORBIT.controls.enabled = !event.value;
   });
@@ -28,6 +29,17 @@ function createController() {
   scene.add(controls);
 
   raycasterObjects.push(controls);
+}
+
+/**
+ * Renders the transform controls changes
+ * TODO: Perhaps we should move this function to a new file e.g. /utils/render.js
+ *       as we may have other render functions in the future
+ */
+function transformRender() {
+  setOutline();
+  updateUI();
+  render();
 }
 
 /**
