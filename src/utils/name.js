@@ -1,5 +1,7 @@
 'use strict';
 
+import UI from '/src/configs/ui.js';
+
 function removeObject() {
   // TODO: Implement this function
 }
@@ -10,8 +12,7 @@ function removeObject() {
  * @returns object name to use
  */
 function getName(objectName) {
-  const ul = document.getElementById('sceneObjects');
-  const li = ul.getElementsByTagName('li');
+  const li = UI.sceneObjects.getElementsByTagName('li');
 
   let highest = -1;
 

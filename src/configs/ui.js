@@ -38,6 +38,7 @@ const UI = {
   'settingsButton': document.getElementById('settingsButton'),
   'settingsContent': document.getElementById('settingsContent'),
   'settingsObjects': document.getElementById('settingsContent'),
+  'sceneObjects': document.getElementById('sceneObjects'),
   'scene': document.getElementById('scene'),
   'camera': document.getElementById('camera'),
   'position': {
