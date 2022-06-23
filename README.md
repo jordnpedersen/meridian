@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/meridian.png" alt="meridian: 3D graphics web app" style="border-radius: 6px">
+  <img src="assets/meridian.png" alt="meridian: 3D graphics web app">
 </div>
 
 ## meridian
