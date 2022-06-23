@@ -84,6 +84,27 @@ function updateMaterialProperties(object) {
 }
 
 /**
+ * Checks to see if event pressed is the 'scene' UI element
+ * @param {event} event
+ * @returns true if scene section is in event's path array
+ */
+function clickedUI(event) {
+  for (let i = 0; i < event.composedPath().length; i++) {
+    if (event.composedPath()[i] === UI.file ||
+      event.composedPath()[i] === UI.edit ||
+      event.composedPath()[i] === UI.add ||
+      event.composedPath()[i] === UI.help ||
+      event.composedPath()[i] === UI.settings ||
+      event.composedPath()[i] === UI.viewHelper ||
+      event.composedPath()[i] === UI.hotkeys) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Resets UI to default parameters
  */
 function resetUI() {
@@ -130,4 +151,4 @@ document.getElementById('settings').addEventListener('mouseleave', event => {
   mouseOverSettings = false;
 })
 
-export {updateUI};
+export {updateUI, clickedUI};
