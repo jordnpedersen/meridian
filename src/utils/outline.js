@@ -1,7 +1,7 @@
 'use strict';
 
 import * as THREE from 'three';
-import * as OUTLINE from '/src/materials/outline.js';
+import {MATERIALS} from '/src/configs/materials.js';
 import {scene, camera} from '/src/main.js';
 import {deleteObject} from '/src/utils/object.js';
 
@@ -28,7 +28,7 @@ function deleteOutline() {
  */
 function createOutline(object) {
   if (!outlineExists() && object.isMesh) {
-    const outlineMesh = new THREE.Mesh(object.geometry, OUTLINE.material);
+    const outlineMesh = new THREE.Mesh(object.geometry, MATERIALS.outline);
     outlineMesh.position.copy(object.position);
     outlineMesh.static = true;
     outlineMesh.pseudoParent = object;
