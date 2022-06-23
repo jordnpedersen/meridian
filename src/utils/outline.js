@@ -46,7 +46,7 @@ function setOutline() {
     const object = scene.getObjectByName('outline');
 
     // TODO: Temporary fix, make something more elegant later
-    if (!object.geometry.type === 'TorusKnotGeometry') {
+    if (object.geometry.type !== 'TorusKnotGeometry') {
       object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.005);
       object.scale.y = Math.abs(object.pseudoParent.scale.y) + (camera.position.distanceTo(object.position) * 0.005);
       object.scale.z = Math.abs(object.pseudoParent.scale.z) + (camera.position.distanceTo(object.position) * 0.005);
