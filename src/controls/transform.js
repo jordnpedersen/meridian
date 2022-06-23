@@ -73,6 +73,9 @@ function outlineDetach(object) {
   controls.detach(object);
 }
 
+/**
+ * Deletes the currently attached object and object outline
+ */
 function deleteAttachedObject() {
   if (controls.object.isMesh) {
     deleteOutline();
