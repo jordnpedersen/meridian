@@ -2,11 +2,7 @@
 
 import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
-import * as BASIC from '/src/materials/basic.js';
-import * as LAMBERT from '/src/materials/lambert.js';
-import * as NORMAL from '/src/materials/normal.js';
-import * as PHONG from '/src/materials/phong.js';
-import * as STANDARD from '/src/materials/standard.js';
+import {MATERIALS} from '/src/configs/materials.js';
 import UI from '/src/configs/ui.js';
 import {scene, camera} from '/src/main.js';
 
@@ -102,7 +98,7 @@ UI.scale.z.addEventListener('blur', event => {
 
 UI.basic.addEventListener('click', event => {
   if (TRANSFORM.controls.object.isMesh) {
-    TRANSFORM.controls.object.material = BASIC.material;
+    TRANSFORM.controls.object.material = MATERIALS.basic;
   }
 });
 
@@ -110,7 +106,7 @@ UI.basic.addEventListener('click', event => {
 
 UI.lambert.addEventListener('click', event => {
   if (TRANSFORM.controls.object.isMesh) {
-    TRANSFORM.controls.object.material = LAMBERT.material;
+    TRANSFORM.controls.object.material = MATERIALS.lambert;
   }
 });
 
@@ -118,7 +114,7 @@ UI.lambert.addEventListener('click', event => {
 
 UI.normal.addEventListener('click', event => {
   if (TRANSFORM.controls.object.isMesh) {
-    TRANSFORM.controls.object.material = NORMAL.material;
+    TRANSFORM.controls.object.material = MATERIALS.normal;
   }
 });
 
@@ -126,7 +122,7 @@ UI.normal.addEventListener('click', event => {
 
 UI.phong.addEventListener('click', event => {
   if (TRANSFORM.controls.object.isMesh) {
-    TRANSFORM.controls.object.material = PHONG.material;
+    TRANSFORM.controls.object.material = MATERIALS.phong;
   }
 });
 
@@ -134,7 +130,7 @@ UI.phong.addEventListener('click', event => {
 
 UI.standard.addEventListener('click', event => {
   if (TRANSFORM.controls.object.isMesh) {
-    TRANSFORM.controls.object.material = STANDARD.material;
+    TRANSFORM.controls.object.material = MATERIALS.standard;
   }
 });
 

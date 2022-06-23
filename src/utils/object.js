@@ -1,11 +1,11 @@
 'use strict';
 
 import * as THREE from 'three';
-import * as STANDARD from '/src/materials/standard.js';
 import * as NAME from '/src/utils/name.js';
 import * as ID from '/src/utils/uuid.js';
 import * as TRANSFORM from '/src/controls/transform.js';
-import {objects} from '/src/configs/objects.js';
+import {OBJECTS} from '/src/configs/objects.js';
+import {MATERIALS} from '/src/configs/materials.js';
 import {scene} from '/src/main.js';
 
 const raycasterObjects = [];
@@ -16,7 +16,7 @@ const raycasterObjects = [];
  * @param {boolean} attach true if transform controls should automatically be attached to object
  */
 function addObject(objectName, attach = true) {
-  const object = new THREE.Mesh(objects[objectName].geometry, STANDARD.material);
+  const object = new THREE.Mesh(OBJECTS[objectName].geometry, MATERIALS.standard);
   object.name = NAME.getName(objectName);
   raycasterObjects.push(object);
   scene.add(object);
