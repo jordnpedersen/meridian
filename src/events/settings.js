@@ -14,11 +14,11 @@ let mouseOverSettings = false;
 
 // Determines whether mouse cursor is over settings
 
-document.getElementById('settings').addEventListener('mouseover', event => {
+UI.settings.addEventListener('mouseover', event => {
   mouseOverSettings = true;
 })
 
-document.getElementById('settings').addEventListener('mouseleave', event => {
+UI.settings.addEventListener('mouseleave', event => {
   mouseOverSettings = false;
 })
 
@@ -26,7 +26,7 @@ document.getElementById('settings').addEventListener('mouseleave', event => {
 
 // SELECT
 
-document.getElementById('sceneObjects').addEventListener('click', event => {
+UI.sceneObjects.addEventListener('click', event => {
   const object = scene.getObjectById(parseInt(event.target.id));
 
   if (object !== undefined) {
