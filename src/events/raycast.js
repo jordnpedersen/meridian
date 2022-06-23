@@ -65,16 +65,7 @@ window.addEventListener('mousedown', event => {
  * Calculate objects intersecting the picking ray
  */
 function raycast() {
-  // const intersects = raycaster.intersectObjects(scene.children);
-
   raycaster.setFromCamera(pointer, camera);
-
-  // for (let i = 0; i < intersects.length; i++) {
-  //   if (intersects[i].object.type === 'Mesh' && (pointer.x !== 0 && pointer.y !== 0)) {
-  //     // TODO: See if we need a case where an object will change upon mouse over
-  //     // intersects[i].object.material.color.set(0xff0000);
-  //   }
-  // }
 }
 
 export {raycast};
