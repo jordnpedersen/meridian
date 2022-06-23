@@ -2,15 +2,8 @@
 
 import * as THREE from 'three';
 import * as TRANSFORM from '/src/controls/transform.js';
-import * as BASIC from '/src/materials/basic.js';
-import * as LAMBERT from '/src/materials/lambert.js';
-import * as NORMAL from '/src/materials/normal.js';
-import * as PHONG from '/src/materials/phong.js';
-import * as STANDARD from '/src/materials/standard.js';
 import UI from '/src/configs/ui.js';
-import {scene, camera} from '/src/main.js';
-
-let mouseOverSettings = false;
+import {mouseOverSettings} from '/src/events/settings.js';
 
 /**
  * Updates UI position
@@ -84,6 +77,27 @@ function updateMaterialProperties(object) {
 }
 
 /**
+ * Checks to see if event pressed is the 'scene' UI element
+ * @param {event} event
+ * @returns true if scene section is in event's path array
+ */
+function clickedUI(event) {
+  for (let i = 0; i < event.composedPath().length; i++) {
+    if (event.composedPath()[i] === UI.file ||
+      event.composedPath()[i] === UI.edit ||
+      event.composedPath()[i] === UI.add ||
+      event.composedPath()[i] === UI.help ||
+      event.composedPath()[i] === UI.settings ||
+      event.composedPath()[i] === UI.viewHelper ||
+      event.composedPath()[i] === UI.hotkeys) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Resets UI to default parameters
  */
 function resetUI() {
@@ -109,25 +123,4 @@ function updateUI() {
   }
 }
 
-/**
- * Attaches transform controls to selected UI object from scene
- */
-document.getElementById('sceneObjects').addEventListener('click', event => {
-  const object = scene.getObjectById(parseInt(event.target.id));
-
-  if (object !== undefined) {
-    TRANSFORM.outlineAttach(object);
-  }
-});
-
-// Temporary events until I figure out a better way to do this
-
-document.getElementById('settings').addEventListener('mouseover', event => {
-  mouseOverSettings = true;
-})
-
-document.getElementById('settings').addEventListener('mouseleave', event => {
-  mouseOverSettings = false;
-})
-
-export {updateUI};
+export {updateUI, clickedUI};
