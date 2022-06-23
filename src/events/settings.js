@@ -10,6 +10,30 @@ import * as STANDARD from '/src/materials/standard.js';
 import UI from '/src/configs/ui.js';
 import {scene, camera} from '/src/main.js';
 
+let mouseOverSettings = false;
+
+// Determines whether mouse cursor is over settings
+
+document.getElementById('settings').addEventListener('mouseover', event => {
+  mouseOverSettings = true;
+})
+
+document.getElementById('settings').addEventListener('mouseleave', event => {
+  mouseOverSettings = false;
+})
+
+// --- SCENE ---
+
+// SELECT
+
+document.getElementById('sceneObjects').addEventListener('click', event => {
+  const object = scene.getObjectById(parseInt(event.target.id));
+
+  if (object !== undefined) {
+    TRANSFORM.outlineAttach(object);
+  }
+});
+
 // --- OBJECT ---
 
 // POSITION
@@ -223,3 +247,5 @@ UI.zoom.addEventListener('blur', event => {
   camera.zoom = parseFloat(UI.zoom.value);
   camera.updateProjectionMatrix();
 })
+
+export {mouseOverSettings};

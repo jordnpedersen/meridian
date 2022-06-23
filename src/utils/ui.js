@@ -8,9 +8,8 @@ import * as NORMAL from '/src/materials/normal.js';
 import * as PHONG from '/src/materials/phong.js';
 import * as STANDARD from '/src/materials/standard.js';
 import UI from '/src/configs/ui.js';
+import {mouseOverSettings} from '/src/events/settings.js';
 import {scene, camera} from '/src/main.js';
-
-let mouseOverSettings = false;
 
 /**
  * Updates UI position
@@ -129,26 +128,5 @@ function updateUI() {
     }
   }
 }
-
-/**
- * Attaches transform controls to selected UI object from scene
- */
-document.getElementById('sceneObjects').addEventListener('click', event => {
-  const object = scene.getObjectById(parseInt(event.target.id));
-
-  if (object !== undefined) {
-    TRANSFORM.outlineAttach(object);
-  }
-});
-
-// Temporary events until I figure out a better way to do this
-
-document.getElementById('settings').addEventListener('mouseover', event => {
-  mouseOverSettings = true;
-})
-
-document.getElementById('settings').addEventListener('mouseleave', event => {
-  mouseOverSettings = false;
-})
 
 export {updateUI, clickedUI};
