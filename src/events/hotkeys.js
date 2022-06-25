@@ -92,7 +92,7 @@ document.addEventListener('keydown', event => {
         break;
       case 'Delete':
         TRANSFORM.deleteAttachedObject();
-        TRANSFORM.controls.detach();
+        // TRANSFORM.controls.detach();
         break;
     }
   }

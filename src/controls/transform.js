@@ -8,6 +8,7 @@ import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists, setOutline} from '/src/utils/outline.js';
 import {deleteObject} from '/src/utils/object.js';
 import {updateUI} from '/src/utils/ui.js';
+import {createMouseUpEvent} from '/src/events/controls.js';
 
 let controls;
 
@@ -21,6 +22,8 @@ function createController() {
   controls.addEventListener('dragging-changed', event => {
     ORBIT.controls.enabled = !event.value;
   });
+
+  createMouseUpEvent(controls);
 
   // Set a custom property 'static' to let raycaster know to not select transform controller mesh
   // TODO: See if it would be better to create a new method outside that handles this for any object
@@ -87,6 +90,7 @@ function deleteAttachedObject() {
     raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid), 1);
   }
   deleteObject(controls.object);
+  controls.detach();
 }
 
-export {controls, createController, outlineAttach, outlineDetach, deleteAttachedObject};
+export {controls, createController, outlineAttach, outlineDetach, deleteAttachedObject, transformRender};
