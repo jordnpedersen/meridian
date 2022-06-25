@@ -23,6 +23,19 @@ function deleteOutline() {
 }
 
 /**
+ * Checks to see if an object is an outline or not
+ * @param {THREE.Object3D} object object to check if outline
+ * @returns true if object is an outline
+ */
+function isOutline(object) {
+  if (object.name === 'outline' && Object.hasOwn(object, 'pseudoParent')) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
  * Creates a visual outline of an object
  * @param {THREE.Object3D} object object to create outline of
  */
@@ -45,6 +58,14 @@ function setOutline() {
   try { // TODO: Maybe use `if (outlineExists())` instead of try/catch
     const object = scene.getObjectByName('outline');
 
+    object.position.x = object.pseudoParent.position.x;
+    object.position.y = object.pseudoParent.position.y;
+    object.position.z = object.pseudoParent.position.z;
+
+    object.rotation.x = object.pseudoParent.rotation.x;
+    object.rotation.y = object.pseudoParent.rotation.y;
+    object.rotation.z = object.pseudoParent.rotation.z;
+
     // TODO: Temporary fix, make something more elegant later
     if (object.geometry.type !== 'TorusKnotGeometry') {
       object.scale.x = Math.abs(object.pseudoParent.scale.x) + (camera.position.distanceTo(object.position) * 0.005);
@@ -55,16 +76,8 @@ function setOutline() {
       object.scale.y = object.pseudoParent.scale.y + (camera.position.distanceTo(object.position) * 0.005);
       object.scale.z = object.pseudoParent.scale.z + (camera.position.distanceTo(object.position) * 0.005);
     }
-
-    object.position.x = object.pseudoParent.position.x;
-    object.position.y = object.pseudoParent.position.y;
-    object.position.z = object.pseudoParent.position.z;
-
-    object.rotation.x = object.pseudoParent.rotation.x;
-    object.rotation.y = object.pseudoParent.rotation.y;
-    object.rotation.z = object.pseudoParent.rotation.z;
   } catch (err) {
   }
 }
 
-export {createOutline, deleteOutline, setOutline, outlineExists};
+export {createOutline, deleteOutline, setOutline, outlineExists, isOutline};
