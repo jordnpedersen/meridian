@@ -155,10 +155,13 @@ UI.background.addEventListener('input', event => {
 
 UI.color.addEventListener('input', event => {
   if (TRANSFORM.controls.object !== undefined) {
+    const color = UI.color.value.replace('#', '0x');
     if (TRANSFORM.controls.object.isMesh) {
-      updateObjectMaterialColor(TRANSFORM.controls.object);
+      TRANSFORM.controls.object.material.color.setHex(color);
     } else if (TRANSFORM.controls.object.isLight) {
-      updateLightMaterialColor(TRANSFORM.controls.object);
+      const helper = scene.getObjectByName(TRANSFORM.controls.object.uuid);
+      TRANSFORM.controls.object.color.setHex(color);
+      helper.material.color.setHex(color);
     }
   }
 });
