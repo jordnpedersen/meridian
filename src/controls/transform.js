@@ -79,17 +79,8 @@ function outlineDetach(object) {
 /**
  * Deletes the currently attached object and object outline
  */
-function deleteAttachedObject() {
-  if (controls.object.isMesh) {
-    deleteOutline();
-  }
-  if (controls.object.isLight) {
-    const lightHelper = scene.getObjectByName(controls.object.uuid);
-    raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === lightHelper.uuid), 1);
-  } else {
-    raycasterObjects.splice(raycasterObjects.findIndex(obj => obj.uuid === controls.object.uuid), 1);
-  }
-  deleteObject(controls.object);
+function deleteAttachedObject(isCmd = false) {
+  deleteObject(controls.object, isCmd);
   controls.detach();
 }
 
