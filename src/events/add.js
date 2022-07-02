@@ -24,10 +24,10 @@ for (let child of light_li) {
   childID.addEventListener('click', () => {
     switch (child.children.item(0).outerText) {
       case 'point':
-        POINT.addLight(true, [0, 3, 0], ui.color.value);
+        POINT.addLight(true, [0, 3, 0], UI.color.value);
         break;
       case 'spot':
-        SPOT.addLight(true, [0, 3, 0], ui.color.value);
+        SPOT.addLight(true, [0, 3, 0], UI.color.value);
         break;
     }
   });
