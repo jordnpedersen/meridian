@@ -11,10 +11,12 @@ import * as POINT from '/src/lights/point.js';
 import * as SPOT from '/src/lights/spot.js';
 import * as ViewHelper from 'ViewHelper';
 import {raycast} from '/src/events/raycast.js';
+import {clear} from '/src/history/history.js';
 import dropdown from '/src/events/dropdown.js';
 import '/src/events/add.js';
 import '/src/events/settings.js';
 import '/src/events/hotkeys.js';
+import '/src/events/edit.js';
 
 let scene, perspective, orthographic, camera, renderer, helper;
 
@@ -52,6 +54,10 @@ function init() {
   POINT.addLight(false, [3, 3, 3], 0x804040);
 
   SPOT.addLight(false, [-3, 2, -3], 0x804080);
+
+  clear();
+
+  console.log(scene);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
