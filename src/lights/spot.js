@@ -40,6 +40,7 @@ function addLight(attach = true, position = POSITION, color = COLOR, intensity =
   const helper = new THREE.SpotLightHelper(light);
   helper.cone.geometry.setDrawRange(2, 72);
   helper.cone.scale.multiplyScalar(1 / DISTANCE);
+  helper.name = light.uuid;
   helper.isHelper = true;
   scene.add(helper);
 

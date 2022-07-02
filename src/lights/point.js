@@ -36,6 +36,7 @@ function addLight(attach = true, position = POSITION, color = COLOR, intensity =
   }
 
   const helper = new THREE.PointLightHelper(light, size);
+  helper.name = light.uuid;
   helper.isHelper = true;
   scene.add(helper);
 
