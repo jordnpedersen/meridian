@@ -11,6 +11,10 @@ function replaceID(object, objectId) {
   document.getElementById(objectId).setAttribute('id', object.uuid);
 }
 
+function removeID(objectId) {
+  document.getElementById(objectId).parentNode.remove();
+}
+
 /**
  * Embeds a THREE.Object3D's UUID to the corresponding <li> in the scene
  * @param {THREE.Object3D} object object to embed ID into HTML
@@ -25,4 +29,4 @@ function assignID(object) {
   li.appendChild(button);
 }
 
-export {replaceID, assignID};
+export {replaceID, assignID, removeID};
