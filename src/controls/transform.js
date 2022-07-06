@@ -2,7 +2,7 @@
 
 import * as THREE from 'three';
 import * as ORBIT from '/src/controls/orbit.js';
-import {TransformControls} from 'TransformControls';
+import {TransformControls} from '/node_modules/three/examples/jsm/controls/TransformControls.js';
 import {scene, camera, renderer, render} from '/src/main.js';
 import {raycasterObjects} from '/src/utils/object.js';
 import {createOutline, deleteOutline, outlineExists, setOutline} from '/src/utils/outline.js';

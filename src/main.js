@@ -9,7 +9,7 @@ import * as OBJECT from '/src/utils/object.js';
 import * as AMBIENT from '/src/lights/ambient.js';
 import * as POINT from '/src/lights/point.js';
 import * as SPOT from '/src/lights/spot.js';
-import * as ViewHelper from 'ViewHelper';
+import * as ViewHelper from '/node_modules/three/examples/jsm/helpers/ViewHelper.js';
 import {raycast} from '/src/events/raycast.js';
 import dropdown from '/src/events/dropdown.js';
 import '/src/events/add.js';

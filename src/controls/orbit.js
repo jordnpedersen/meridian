@@ -1,6 +1,6 @@
 'use strict';
 
-import {OrbitControls} from 'OrbitControls';
+import {OrbitControls} from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 import {camera, renderer} from '/src/main.js';
 
 let controls;
